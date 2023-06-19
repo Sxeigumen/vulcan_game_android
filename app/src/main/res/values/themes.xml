@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Game" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Game" parent="Theme.MaterialComponents.DayNight.DarkActionBar" />
+    <style name ="NoActionBarTheme" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">@color/purple_500</item>
+        <item name="android:colorPrimaryDark">@color/purple_700</item>
+        <item name="android:colorAccent">@color/teal_700</item>
+    </style>
+
+    <style name="NoactionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/teal_700</item>
+        <!-- hides status bar-->
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>
