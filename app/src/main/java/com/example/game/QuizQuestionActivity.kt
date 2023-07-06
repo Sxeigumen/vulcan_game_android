@@ -59,7 +59,7 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
         val question = mQuestionsList!![mCurrentPosition - 1]
         defaultOptionsView()
 
-        if (mCurrentPosition == mQuestionsList!!.size) {
+        if (mCurrentPosition - 1 == mQuestionsList!!.size) {
             buttonSubmit?.text = "FINISH"
         } else {
             buttonSubmit?.text = "SUBMIT"
@@ -74,6 +74,7 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
         tvOptionTwo?.text = question.optionTwo
         tvOptionThree?.text = question.optionThree
         tvOptionFour?.text = question.optionFour
+
     }
     private fun defaultOptionsView()
     {
@@ -96,6 +97,7 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
         {
             option.setTextColor(Color.parseColor("#7A8089"))
             option.typeface = Typeface.DEFAULT
+            option.isEnabled = true
             option.background = ContextCompat.getDrawable(
                 this,
                 R.drawable.default_option_border_bg
@@ -156,8 +158,11 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
                         buttonSubmit?.text = "Go TO NEXT QUESTION"
                     }
                     mSelectedOptionPosition = 0
+                    tvOptionOne?.isEnabled = false
+                    tvOptionTwo?.isEnabled = false
+                    tvOptionThree?.isEnabled = false
+                    tvOptionFour?.isEnabled = false
                 }
-
             }
         }
     }

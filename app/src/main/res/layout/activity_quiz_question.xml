@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".QuizQuestionActivity"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@android:color/white">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -114,7 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/purple_700"
+            android:backgroundTint="@android:color/holo_green_dark"
             android:text="SUBMIT"
             android:textColor="@android:color/white"
             android:textSize="18sp"

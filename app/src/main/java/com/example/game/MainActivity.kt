@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val buttonStart:Button = findViewById(R.id.btn_start)
         val etName:AppCompatEditText = findViewById(R.id.et_name)
-        
+
         buttonStart.setOnClickListener {
             if (etName.text.toString().isEmpty()) {
                 Toast.makeText(this, "Please enten your name", Toast.LENGTH_SHORT).show()

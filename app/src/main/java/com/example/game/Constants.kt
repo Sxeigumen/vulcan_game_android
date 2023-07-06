@@ -9,7 +9,7 @@ object Constants {
 
         val que1 = Question (
             1,
-            "Что это за элемент представлен на фото?",
+            "Что за элемент представлен на фото?",
              R.drawable.diod,
             "Диод",
             "Конденсатор",
@@ -20,7 +20,7 @@ object Constants {
         questionList.add(que1)
         val que2 = Question (
             2,
-            "Что это за элемент представлен на фото?",
+            "Что за элемент представлен на фото?",
             R.drawable.capacitor,
             "Диод",
             "Катушка",
@@ -31,7 +31,7 @@ object Constants {
         questionList.add(que2)
         val que3 = Question (
             3,
-            "Что это за элемент представлен на фото?",
+            "Что за элемент представлен на фото?",
             R.drawable.inductor,
             "Резистор",
             "Диод",
@@ -42,7 +42,7 @@ object Constants {
         questionList.add(que3)
         val que4 = Question (
             4,
-            "Что это за элемент представлен на фото?",
+            "Что за элемент представлен на фото?",
             R.drawable.resistor,
             "Диод",
             "Резистор",

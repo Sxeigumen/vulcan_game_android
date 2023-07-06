@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="20dp"
+
     tools:context=".ResultActivity">
     <TextView
         android:id="@+id/tv_result"
@@ -15,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="Result"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/holo_green_dark"
         android:textSize="25sp"
         android:textStyle="bold"/>
 
@@ -50,15 +51,16 @@
         android:layout_marginTop="10dp"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="20sp"
+        android:textStyle="bold"
         tools:text="Your score is 9 out of 10" />
     <Button
         android:id="@+id/btn_finish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@android:color/white"
+        android:backgroundTint="@android:color/holo_green_dark"
         android:text="FINISH"
-        android:textColor="@color/purple_700"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
 
