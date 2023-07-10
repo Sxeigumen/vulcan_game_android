@@ -24,13 +24,13 @@ class MenuActivity : AppCompatActivity() {
             finish()
         }
         buttonStart2.setOnClickListener {
-            val intent = Intent(this, LevelEasyActivity::class.java)
+            val intent = Intent(this, LevelAverageActivity::class.java)
             intent.putExtra(Constants.USER_NAME, username)
             startActivity(intent)
             finish()
         }
         buttonStart3.setOnClickListener {
-            val intent = Intent(this, LevelEasyActivity::class.java)
+            val intent = Intent(this, LevelAverageActivity::class.java)
             intent.putExtra(Constants.USER_NAME, username)
             startActivity(intent)
             finish()

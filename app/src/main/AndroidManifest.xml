@@ -13,17 +13,20 @@
         android:theme="@style/Theme.Game"
         tools:targetApi="31">
         <activity
+            android:name=".LevelAverageActivity"
+            android:exported="false" />
+        <activity
             android:name=".MenuActivity"
-            android:screenOrientation="portrait"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/NoactionBar" />
         <activity
             android:name=".ResultActivity"
             android:screenOrientation="fullSensor" />
         <activity
             android:name=".LevelEasyActivity"
-            android:theme="@style/NoactionBar"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/NoactionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
