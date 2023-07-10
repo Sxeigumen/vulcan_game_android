@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.DragEvent
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
@@ -42,31 +43,12 @@ class LevelAverageActivity : AppCompatActivity() {
             }
             DragEvent.ACTION_DRAG_EXITED -> {
                 binding.maskDropArea.alpha = 1.0f
-                draggableItem.visibility = View.VISIBLE
+                //draggableItem.visibility = View.VISIBLE
                 view.invalidate()
                 true
             }
             DragEvent.ACTION_DROP -> {
                 binding.maskDropArea.alpha = 1.0f
-
-                if (dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
-                    val draggedData = dragEvent.clipData.getItemAt(0).text
-                    println("draggedData $draggedData")
-                }
-
-                draggableItem.x = dragEvent.x - (draggableItem.width/2)
-                draggableItem.y = dragEvent.y - (draggableItem.height/2)
-
-                val parent = draggableItem.parent as ConstraintLayout
-
-                parent.removeView(draggableItem)
-
-                val dropArea = view as ConstraintLayout
-                dropArea.addView(draggableItem)
-                //checkIfElementIsOnScheme(dragEvent)
-                true
-            }
-            DragEvent.ACTION_DRAG_ENDED -> {
                 if (draggableItem.id == R.id.ivOptionOne)
                 {
                     val name : String = "schema1_after_optionone"
@@ -94,6 +76,26 @@ class LevelAverageActivity : AppCompatActivity() {
                     )
                     binding.faceArea.setBackgroundResource(resID)
                 }
+
+                /*if (dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+                    val draggedData = dragEvent.clipData.getItemAt(0).text
+                    println("draggedData $draggedData")
+                }*/
+
+                /*draggableItem.x = dragEvent.x - (draggableItem.width/2)
+                draggableItem.y = dragEvent.y - (draggableItem.height/2)
+
+                val parent = draggableItem.parent as ConstraintLayout
+
+                parent.removeView(draggableItem)
+
+                val dropArea = view as ConstraintLayout
+                dropArea.addView(draggableItem)*/
+                checkIfElementIsOnScheme(dragEvent)
+                true
+            }
+            DragEvent.ACTION_DRAG_ENDED -> {
+
                 //draggableItem.visibility = View.VISIBLE
                 view.invalidate()
                 true
@@ -103,22 +105,22 @@ class LevelAverageActivity : AppCompatActivity() {
             }
         }
     }
-    /*private val elementOn = "Bingo! Element on"
+    private val elementOn = "Bingo! Element on"
     private val elementOff = "Element off :("
-    private fun checkIfElementIsOnScheme(dragEvent: DragEvent) {
+    private fun checkIfElementIsOnScheme(dragEvent: DragEvent)  {
         val faceXStart = binding.faceArea.x
         val faceYStart = binding.faceArea.y
 
         val faceXEnd = faceXStart + binding.faceArea.width
         val faceYEnd = faceYStart + binding.faceArea.height
 
-        val toastMsg = if (dragEvent.x in faceXStart..faceXEnd && dragEvent.y in faceYStart..faceYEnd) {
+        val toastedMsg = if (dragEvent.x in faceXStart..faceXEnd && dragEvent.y in faceYStart..faceYEnd) {
             elementOn
         } else {
             elementOff
         }
-        Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show()
-    }*/
+        Toast.makeText(this, toastedMsg, Toast.LENGTH_SHORT).show()
+    }
     private fun attachViewDraglistener()
     {
         binding.ivOptionOne.setOnLongClickListener { view: View ->
@@ -134,7 +136,7 @@ class LevelAverageActivity : AppCompatActivity() {
             } else {
                 view.startDragAndDrop(dataToDrag, maskShadow, view, 0)
             }
-            view.visibility = View.INVISIBLE
+            //view.visibility = View.INVISIBLE
             true
 
         }
@@ -151,7 +153,7 @@ class LevelAverageActivity : AppCompatActivity() {
             } else {
                 view.startDragAndDrop(dataToDrag, maskShadow, view, 0)
             }
-            view.visibility = View.INVISIBLE
+            //view.visibility = View.INVISIBLE
             true
 
         }
@@ -168,7 +170,7 @@ class LevelAverageActivity : AppCompatActivity() {
             } else {
                 view.startDragAndDrop(dataToDrag, maskShadow, view, 0)
             }
-            view.visibility = View.INVISIBLE
+            //view.visibility = View.INVISIBLE
             true
 
         }
