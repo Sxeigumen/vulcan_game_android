@@ -5,13 +5,12 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
-class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
+class LevelEasyActivity : AppCompatActivity(), View.OnClickListener {
     private var progressBar:ProgressBar?=null
     private var tvProgress: TextView? = null
     private var tvQuestion:TextView? = null
@@ -30,7 +29,7 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quiz_question)
+        setContentView(R.layout.activity_level_easy)
 
         mUserName = intent.getStringExtra(Constants.USER_NAME)
 
