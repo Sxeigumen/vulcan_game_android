@@ -18,6 +18,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.game.databinding.ActivityLevelAverageBinding
+import android.content.Context
+import android.content.res.Resources
 
 class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
     private val itemDragMessage = "Item Added"
@@ -27,6 +29,7 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
     private var mSelectedOptionPosition:Int = 0
     private var mCorrectAnswers:Int = 0
     private var mUserName: String? = null
+    private var mCurrentStage : Int = 0
 
     private lateinit var binding: ActivityLevelAverageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,17 +46,13 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
 
         attachViewDraglistener()
         binding.maskDropArea.setOnDragListener(maskDragListener)
-
-        binding.tvOptionOne?.setOnClickListener(this)
-        binding.tvOptionTwo?.setOnClickListener(this)
-        binding.tvOptionThree?.setOnClickListener(this)
         binding.btnSubmit?.setOnClickListener(this)
     }
     @SuppressLint("SetTextI18n")
     private fun setQuestion() {
 
         val question = mQuestionsList!![mCurrentPosition - 1]
-        defaultOptionsView()
+        //defaultOptionsView()
 
         if (mCurrentPosition - 1 == mQuestionsList!!.size) {
             binding.btnSubmit?.text = "FINISH"
@@ -67,16 +66,13 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.tvQuestion?.text = question.question
         binding.tvQuestion?.text = question.question
-        binding.tvOptionOne?.text = question.optionOne
-        binding.tvOptionTwo?.text = question.optionTwo
-        binding.tvOptionThree?.text = question.optionThree
         binding.ivOptionOne?.setImageResource(question.imageOptionOne)
         binding.ivOptionTwo?.setImageResource(question.imageOptionTwo)
         binding.ivOptionThree?.setImageResource(question.imageOptionThree)
 
     }
 
-    private fun defaultOptionsView()
+   /* private fun defaultOptionsView()
     {
         val options = ArrayList<TextView>()
         binding.tvOptionOne?.let {
@@ -100,29 +96,13 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                 R.drawable.default_option_border_bg
             )
         }
-    }
+    }*/
 
     override fun onClick(v: View?) {
         when(v?.id) {
-            R.id.tv_option_one -> {
-                binding.tvOptionOne?.let {
-                    selectedOptionView(it, 1)
-                }
-            }
-            R.id.tv_option_two -> {
-                binding.tvOptionTwo?.let {
-                    selectedOptionView(it, 2)
-                }
-            }
-            R.id.tv_option_three -> {
-                binding.tvOptionThree?.let {
-                    selectedOptionView(it, 3)
-                }
-            }
             R.id.btn_submit -> {
-                if (mSelectedOptionPosition == 0) {
+                if (mCurrentStage == 0) {
                     mCurrentPosition ++
-
                     when {
                         mCurrentPosition <= mQuestionsList!!.size -> {
                             setQuestion()
@@ -137,46 +117,32 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                     }
                 } else {
                     val question = mQuestionsList?.get(mCurrentPosition - 1)
-                    if (question!!.correctAnswer != mSelectedOptionPosition) {
-                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    if (question!!.correctAnswer != mCurrentStage) {
+                        Toast.makeText(
+                            this,
+                            "Incorrect answer",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
+                        Toast.makeText(
+                            this,
+                            "CORRECT!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         mCorrectAnswers++
                     }
-                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
-
                     if (mCurrentPosition == mQuestionsList!!.size) {
                         binding.btnSubmit?.text = "FINISH"
                     } else {
                         binding.btnSubmit?.text = "Go TO NEXT QUESTION"
                     }
                     mSelectedOptionPosition = 0
-                    binding.tvOptionOne?.isEnabled = false
-                    binding.tvOptionTwo?.isEnabled = false
-                    binding.tvOptionThree?.isEnabled = false
+                    mCurrentStage = 0
                 }
             }
         }
     }
-    private fun answerView(answer: Int, drawableView: Int) {
-        when(answer) {
-            1 -> {
-                binding.tvOptionOne?.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
-            2 -> {
-                binding.tvOptionTwo?.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
-            3 -> {
-                binding.tvOptionThree?.background = ContextCompat.getDrawable(
-                    this, drawableView
-                )
-            }
-        }
-    }
-    private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
+    /*private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
         defaultOptionsView()
         mSelectedOptionPosition = selectedOptionNum
 
@@ -187,7 +153,7 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
             R.drawable.selected_option_border_bg
         )
     }
-
+*/
     private val maskDragListener = View.OnDragListener {
             view, dragEvent ->
         val draggableItem = dragEvent.localState as View
@@ -220,6 +186,7 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                     mQuestionsList?.get(mCurrentPosition - 1)?.let {
                         binding.ivScheme.setImageResource(
                             it.imageAfterOptionOne)
+                        mCurrentStage = it.imageAfterOptionOne
                     }
                 }
                 if (draggableItem.id == R.id.ivOptionTwo)
@@ -232,6 +199,7 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                     mQuestionsList?.get(mCurrentPosition - 1)?.let {
                         binding.ivScheme.setImageResource(
                             it.imageAfterOptionTwo)
+                        mCurrentStage = it.imageAfterOptionTwo
                     }
                 }
                 if (draggableItem.id == R.id.ivOptionThree)
@@ -244,6 +212,7 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                     mQuestionsList?.get(mCurrentPosition - 1)?.let {
                         binding.ivScheme.setImageResource(
                             it.imageAfterOptionThree)
+                        mCurrentStage = it.imageAfterOptionThree
                     }
                 }
 
@@ -261,7 +230,7 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
 
                 val dropArea = view as ConstraintLayout
                 dropArea.addView(draggableItem)*/
-                checkIfElementIsOnScheme(dragEvent)
+                //checkIfElementIsOnScheme(dragEvent)
                 true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
@@ -277,7 +246,7 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
     }
     private val elementOn = "Bingo! Element on"
     private val elementOff = "Element off :("
-    private fun checkIfElementIsOnScheme(dragEvent: DragEvent)  {
+    /*private fun checkIfElementIsOnScheme(dragEvent: DragEvent)  {
         val faceXStart = binding.ivScheme.x
         val faceYStart = binding.ivScheme.y
 
@@ -290,7 +259,7 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
             elementOff
         }
         Toast.makeText(this, toastedMsg, Toast.LENGTH_SHORT).show()
-    }
+    }*/
     private fun attachViewDraglistener()
     {
         binding.ivOptionOne.setOnLongClickListener { view: View ->

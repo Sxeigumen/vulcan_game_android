@@ -6,7 +6,6 @@ object ConstantsAverage {
     const val CORRECT_ANSWERS: String = "correct_answers"
     fun getQuestions(): ArrayList<QuestionAverage> {
         val questionList = ArrayList<QuestionAverage>()
-
         val que1 = QuestionAverage (
             1,
             "Поставьте токоограничивающий элемент",
@@ -20,7 +19,7 @@ object ConstantsAverage {
             "Катушка",
             R.drawable.inductor,
             R.drawable.schema1_after_optiontwo,
-            1
+            R.drawable.schema1_after_optionthree
         )
         questionList.add(que1)
         val que2 = QuestionAverage (
@@ -36,7 +35,7 @@ object ConstantsAverage {
             "Резистор",
             R.drawable.resistor,
             R.drawable.schema1_after_optionthree,
-            3
+            R.drawable.schema1_after_optionthree
         )
         questionList.add(que2)
         val que3 = QuestionAverage (
@@ -52,7 +51,7 @@ object ConstantsAverage {
             "Катушка",
             R.drawable.inductor,
             R.drawable.schema1_after_optiontwo,
-            2
+            R.drawable.schema1_after_optionthree
         )
         questionList.add(que3)
         return questionList
