@@ -14,11 +14,13 @@
         tools:targetApi="31">
         <activity
             android:name=".LevelAverageActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:screenOrientation="unspecified"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <activity
             android:name=".MenuActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/NoactionBar" />
         <activity
             android:name=".ResultActivity"
@@ -26,11 +28,13 @@
         <activity
             android:name=".LevelEasyActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/NoactionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/NoactionBar">
+            android:theme="@style/NoactionBar"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

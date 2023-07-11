@@ -18,15 +18,13 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.game.databinding.ActivityLevelAverageBinding
-import android.content.Context
-import android.content.res.Resources
 
 class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
     private val itemDragMessage = "Item Added"
 
     private var mCurrentPosition:Int = 1
     private var mQuestionsList : ArrayList<QuestionAverage>? = null
-    private var mSelectedOptionPosition:Int = 0
+    //private var mSelectedOptionPosition:Int = 0
     private var mCorrectAnswers:Int = 0
     private var mUserName: String? = null
     private var mCurrentStage : Int = 0
@@ -136,7 +134,6 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                     } else {
                         binding.btnSubmit?.text = "Go TO NEXT QUESTION"
                     }
-                    mSelectedOptionPosition = 0
                     mCurrentStage = 0
                 }
             }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import android.widget.TextView
@@ -19,6 +20,7 @@ class ResultActivity : AppCompatActivity() {
         val tvName: TextView = findViewById(R.id.tv_name)
         val tvScore:TextView = findViewById(R.id.tv_score)
         val btnFinish: Button = findViewById(R.id.btn_finish)
+        val imageTrophy: ImageView = findViewById(R.id.iv_trophy)
 
 
         val username = intent.getStringExtra(Constants.USER_NAME)
@@ -26,7 +28,22 @@ class ResultActivity : AppCompatActivity() {
 
         val totalQuestions = intent.getIntExtra(Constants.TOTAL_QUESTIONS, 0)
         val correctAnswers = intent.getIntExtra(Constants.CORRECT_ANSWERS, 0)
-
+        if (correctAnswers == 4)
+        {
+            imageTrophy.setImageResource(R.drawable.trophy_gold)
+        }
+        else if (correctAnswers == 3)
+        {
+            imageTrophy.setImageResource(R.drawable.trophy_silver)
+        }
+        else if (correctAnswers == 2)
+        {
+            imageTrophy.setImageResource(R.drawable.trophy_bronze)
+        }
+        else
+        {
+            imageTrophy.setImageResource(R.drawable.medal)
+        }
         tvScore.text = "Your score is $correctAnswers out of $totalQuestions"
         btnFinish.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
