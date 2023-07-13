@@ -28,15 +28,15 @@ class ResultActivity : AppCompatActivity() {
 
         val totalQuestions = intent.getIntExtra(Constants.TOTAL_QUESTIONS, 0)
         val correctAnswers = intent.getIntExtra(Constants.CORRECT_ANSWERS, 0)
-        if (correctAnswers == 4)
+        if (correctAnswers in 9..10)
         {
             imageTrophy.setImageResource(R.drawable.trophy_gold)
         }
-        else if (correctAnswers == 3)
+        else if (correctAnswers in 7..8)
         {
             imageTrophy.setImageResource(R.drawable.trophy_silver)
         }
-        else if (correctAnswers == 2)
+        else if (correctAnswers in 5..6)
         {
             imageTrophy.setImageResource(R.drawable.trophy_bronze)
         }
