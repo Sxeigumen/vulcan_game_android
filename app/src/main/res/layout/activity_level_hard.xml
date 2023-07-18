@@ -120,6 +120,30 @@
                 android:text="НАГРЕТЬ"
                 android:textColor="@color/white"
                 android:textSize="26sp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/btn_holod"
+                android:text="ОХЛАДИТЬ"
+                android:textColor="@color/white"
+                android:textSize="26sp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/btn_izluch"
+                android:text="ФОТОСИНТЕЗ"
+                android:textColor="@color/white"
+                android:textSize="26sp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/btn_electro"
+                android:text="ЭЛЕКТРОЛИЗ"
+                android:textColor="@color/white"
+                android:textSize="26sp"/>
         </LinearLayout>
     </ScrollView>
 
