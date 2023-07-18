@@ -30,7 +30,7 @@ class MenuActivity : AppCompatActivity() {
             finish()
         }
         buttonStart3.setOnClickListener {
-            val intent = Intent(this, LevelAverageActivity::class.java)
+            val intent = Intent(this, LevelHardActivity::class.java)
             intent.putExtra(Constants.USER_NAME, username)
             startActivity(intent)
             finish()

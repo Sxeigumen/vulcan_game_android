@@ -44,7 +44,7 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
 
         attachViewDraglistener()
         binding.maskDropArea.setOnDragListener(maskDragListener)
-        binding.btnSubmit?.setOnClickListener(this)
+        binding.btnSubmit.setOnClickListener(this)
     }
     @SuppressLint("SetTextI18n")
     private fun setQuestion() {
@@ -53,20 +53,20 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
         //defaultOptionsView()
 
         if (mCurrentPosition - 1 == mQuestionsList!!.size) {
-            binding.btnSubmit?.text = "FINISH"
+            binding.btnSubmit.text = "FINISH"
         } else {
-            binding.btnSubmit?.text = "SUBMIT"
+            binding.btnSubmit.text = "SUBMIT"
         }
 
-        binding.progressBar?.progress = mCurrentPosition
-        binding.tvProgress?.text = "$mCurrentPosition" + "/" + binding.progressBar?.max
-        binding.ivScheme?.setImageResource(question.image)
+        binding.progressBar.progress = mCurrentPosition
+        binding.tvProgress.text = "$mCurrentPosition" + "/" + binding.progressBar.max
+        binding.ivScheme.setImageResource(question.image)
 
-        binding.tvQuestion?.text = question.question
-        binding.tvQuestion?.text = question.question
-        binding.ivOptionOne?.setImageResource(question.imageOptionOne)
-        binding.ivOptionTwo?.setImageResource(question.imageOptionTwo)
-        binding.ivOptionThree?.setImageResource(question.imageOptionThree)
+        binding.tvQuestion.text = question.question
+        binding.tvQuestion.text = question.question
+        binding.ivOptionOne.setImageResource(question.imageOptionOne)
+        binding.ivOptionTwo.setImageResource(question.imageOptionTwo)
+        binding.ivOptionThree.setImageResource(question.imageOptionThree)
 
     }
 
@@ -130,9 +130,9 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                         mCorrectAnswers++
                     }
                     if (mCurrentPosition == mQuestionsList!!.size) {
-                        binding.btnSubmit?.text = "FINISH"
+                        binding.btnSubmit.text = "FINISH"
                     } else {
-                        binding.btnSubmit?.text = "Go TO NEXT QUESTION"
+                        binding.btnSubmit.text = "Go TO NEXT QUESTION"
                     }
                     mCurrentStage = 0
                 }
