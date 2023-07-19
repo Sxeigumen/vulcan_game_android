@@ -8,10 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.game.databinding.ActivityLevelHardBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.example.game.elementsCreation.Elements
 
 class LevelHardActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityLevelHardBinding
+    private lateinit var binding: ActivityLevelHardBinding
     private val adapter = ElementAdapter()
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +24,11 @@ class LevelHardActivity : AppCompatActivity() {
         val elements = mutableListOf(
             "Водород", "Кислород", "Марганец", "Фтор"
         )
-        for (element in elements)
-        {
+        for (element in elements) {
             val elem = Element(R.drawable.ic_launcher_foreground, element)
             adapter.addElement(elem)
         }
+
         binding.btnGet.setOnClickListener {
             val elem = Element(R.drawable.ic_launcher_foreground, "Хром")
             adapter.addElement(elem)
@@ -55,16 +57,17 @@ class LevelHardActivity : AppCompatActivity() {
             ).show()
             true
         }*/
-        binding.btnItem1.setOnClickListener {
+        binding.iv1.setOnClickListener {
             Toast.makeText(this, "Clicked 1!", Toast.LENGTH_SHORT).show()
         }
-        binding.btnItem2.setOnClickListener {
+        binding.iv2.setOnClickListener {
             Toast.makeText(this, "Clicked 2!", Toast.LENGTH_SHORT).show()
         }
-        binding.btnItem3.setOnClickListener {
+        binding.iv3.setOnClickListener {
             Toast.makeText(this, "Clicked 3!", Toast.LENGTH_SHORT).show()
         }
     }
+
     /*protected fun onListItemClick(l: ListView?, v: View?, position: Int, id: Long) {
         val item = binding.listView.adapter.getItem(position) as String
         Toast.makeText(this, "$item выбран", Toast.LENGTH_LONG).show()
@@ -75,6 +78,7 @@ class LevelHardActivity : AppCompatActivity() {
             recView.adapter = adapter
         }
     }
+
     override fun onBackPressed() {
         val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)
