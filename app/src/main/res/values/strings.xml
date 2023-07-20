@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Game</string>
     <string name="unmatched_item">Face drop area for mask to be dragged</string>
+    <string name="smeshivanieTitle">Смешивание</string>
+    <string name="getResult">Получить</string>
+    <string name="smeshivanieButton">Смешивание</string>
+    <string name="nagrevanieButton">Нагревание</string>
+    <string name="ohlazhdeniyeButton">Охлаждение</string>
+    <string name="izlucheniyeButton">Световое излучение</string>
+    <string name="electrolizButton">Электролиз</string>
 </resources>
