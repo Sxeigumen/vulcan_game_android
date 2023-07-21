@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_grab"
+    app:startDestination="@id/fragment_main">
+
+    <fragment
+        android:id="@+id/fragment_main"
+        android:name="com.example.game.Fragment_main"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_fragment_main_to_fragment_main_heat"
+            app:destination="@id/fragment_main_heat" />
+        <action
+            android:id="@+id/action_fragment_main_to_fragment_main_cool"
+            app:destination="@id/fragment_main_cool" />
+        <action
+            android:id="@+id/action_fragment_main_to_fragment_main_electrolyze"
+            app:destination="@id/fragment_main_electrolyze" />
+        <action
+            android:id="@+id/action_fragment_main_to_fragment_main_shine"
+            app:destination="@id/fragment_main_shine" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_main_heat"
+        android:name="com.example.game.Fragment_main_heat"
+        android:label="fragment_main_heat"
+        tools:layout="@layout/fragment_main_heat" >
+        <action
+            android:id="@+id/action_fragment_main_heat_to_fragment_main_cool"
+            app:destination="@id/fragment_main_cool" />
+        <action
+            android:id="@+id/action_fragment_main_heat_to_fragment_main2"
+            app:destination="@id/fragment_main" />
+        <action
+            android:id="@+id/action_fragment_main_heat_to_fragment_main_electrolyze"
+            app:destination="@id/fragment_main_electrolyze" />
+        <action
+            android:id="@+id/action_fragment_main_heat_to_fragment_main_shine"
+            app:destination="@id/fragment_main_shine" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_main_cool"
+        android:name="com.example.game.Fragment_main_cool"
+        android:label="fragment_main_cool"
+        tools:layout="@layout/fragment_main_cool" >
+        <action
+            android:id="@+id/action_fragment_main_cool_to_fragment_main_electrolyze"
+            app:destination="@id/fragment_main_electrolyze" />
+        <action
+            android:id="@+id/action_fragment_main_cool_to_fragment_main_heat"
+            app:destination="@id/fragment_main_heat" />
+        <action
+            android:id="@+id/action_fragment_main_cool_to_fragment_main"
+            app:destination="@id/fragment_main" />
+        <action
+            android:id="@+id/action_fragment_main_cool_to_fragment_main_shine"
+            app:destination="@id/fragment_main_shine" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_main_electrolyze"
+        android:name="com.example.game.Fragment_main_electrolyze"
+        android:label="fragment_main_electrolyze"
+        tools:layout="@layout/fragment_main_electrolyze" >
+        <action
+            android:id="@+id/action_fragment_main_electrolyze_to_fragment_main_shine"
+            app:destination="@id/fragment_main_shine" />
+        <action
+            android:id="@+id/action_fragment_main_electrolyze_to_fragment_main_cool"
+            app:destination="@id/fragment_main_cool" />
+        <action
+            android:id="@+id/action_fragment_main_electrolyze_to_fragment_main_heat"
+            app:destination="@id/fragment_main_heat" />
+        <action
+            android:id="@+id/action_fragment_main_electrolyze_to_fragment_main"
+            app:destination="@id/fragment_main" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_main_shine"
+        android:name="com.example.game.Fragment_main_shine"
+        android:label="fragment_main_shine"
+        tools:layout="@layout/fragment_main_shine" >
+        <action
+            android:id="@+id/action_fragment_main_shine_to_fragment_main"
+            app:destination="@id/fragment_main" />
+        <action
+            android:id="@+id/action_fragment_main_shine_to_fragment_main_electrolyze"
+            app:destination="@id/fragment_main_electrolyze" />
+        <action
+            android:id="@+id/action_fragment_main_shine_to_fragment_main_cool"
+            app:destination="@id/fragment_main_cool" />
+        <action
+            android:id="@+id/action_fragment_main_shine_to_fragment_main_heat"
+            app:destination="@id/fragment_main_heat" />
+    </fragment>
+</navigation>
