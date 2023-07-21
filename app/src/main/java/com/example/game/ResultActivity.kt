@@ -28,21 +28,40 @@ class ResultActivity : AppCompatActivity() {
 
         val totalQuestions = intent.getIntExtra(Constants.TOTAL_QUESTIONS, 0)
         val correctAnswers = intent.getIntExtra(Constants.CORRECT_ANSWERS, 0)
-        if (correctAnswers in 9..10)
+        val numberOfGame = intent.getIntExtra(Constants.NUMBER_OF_GAME, 0)
+        if (numberOfGame == 1)
         {
-            imageTrophy.setImageResource(R.drawable.trophy_gold)
-        }
-        else if (correctAnswers in 7..8)
-        {
-            imageTrophy.setImageResource(R.drawable.trophy_silver)
-        }
-        else if (correctAnswers in 5..6)
-        {
-            imageTrophy.setImageResource(R.drawable.trophy_bronze)
-        }
-        else
-        {
-            imageTrophy.setImageResource(R.drawable.medal)
+            when(correctAnswers)
+            {
+                9, 10 -> {
+                    imageTrophy.setImageResource(R.drawable.trophy_gold)
+                }
+                7, 8 -> {
+                    imageTrophy.setImageResource(R.drawable.trophy_silver)
+                }
+                5, 6 -> {
+                    imageTrophy.setImageResource(R.drawable.trophy_bronze)
+                }
+                else -> {
+                    imageTrophy.setImageResource(R.drawable.medal)
+                }
+            }
+        } else {
+            when(correctAnswers)
+            {
+                5 -> {
+                    imageTrophy.setImageResource(R.drawable.trophy_gold)
+                }
+                4 -> {
+                    imageTrophy.setImageResource(R.drawable.trophy_silver)
+                }
+                3 -> {
+                    imageTrophy.setImageResource(R.drawable.trophy_bronze)
+                }
+                else -> {
+                    imageTrophy.setImageResource(R.drawable.medal)
+                }
+            }
         }
         tvScore.text = "Your score is $correctAnswers out of $totalQuestions"
         btnFinish.setOnClickListener {

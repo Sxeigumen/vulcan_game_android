@@ -8,6 +8,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Point
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.view.DragEvent
@@ -109,6 +110,7 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                         intent.putExtra(Constants.USER_NAME, mUserName)
                         intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                         intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList?.size)
+                        intent.putExtra(Constants.NUMBER_OF_GAME, "2")
                         startActivity(intent)
                         finish()
                     }
@@ -263,8 +265,13 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
             val item = ClipData.Item(itemDragMessage)
 
             val dataToDrag = ClipData(itemDragMessage, arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN), item)
+            val name : String = "schema${mCurrentPosition}_option_one"
+            val resID = resources.getIdentifier(
+                name, "drawable",
+                packageName
+            )
 
-            val maskShadow = MaskDragShadowBuilder(view)
+            val maskShadow = MaskDragShadowBuilder(view, resID)
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                 @Suppress("DEPRECATION")
@@ -280,8 +287,13 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
             val item = ClipData.Item(itemDragMessage)
 
             val dataToDrag = ClipData(itemDragMessage, arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN), item)
+            val name : String = "schema${mCurrentPosition}_option_two"
+            val resID = resources.getIdentifier(
+                name, "drawable",
+                packageName
+            )
 
-            val maskShadow = MaskDragShadowBuilder(view)
+            val maskShadow = MaskDragShadowBuilder(view,  resID)
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                 @Suppress("DEPRECATION")
@@ -297,8 +309,13 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
             val item = ClipData.Item(itemDragMessage)
 
             val dataToDrag = ClipData(itemDragMessage, arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN), item)
+            val name : String = "schema${mCurrentPosition}_option_three"
+            val resID = resources.getIdentifier(
+                name, "drawable",
+                packageName
+            )
 
-            val maskShadow = MaskDragShadowBuilder(view)
+            val maskShadow = MaskDragShadowBuilder(view,  resID)
 
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                 @Suppress("DEPRECATION")
@@ -312,8 +329,8 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 }
-private class MaskDragShadowBuilder(view: View) : View.DragShadowBuilder(view) {
-    private val shadow = ResourcesCompat.getDrawable(view.context.resources, R.drawable.arrow, view.context.theme)
+private class MaskDragShadowBuilder(view: View, imageId: Int) : View.DragShadowBuilder(view) {
+    private val shadow = ResourcesCompat.getDrawable(view.context.resources, imageId, view.context.theme)
 
     override fun onProvideShadowMetrics(size: Point, touch: Point) {
         val width: Int = view.width
