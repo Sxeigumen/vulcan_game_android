@@ -2,21 +2,16 @@ package com.example.game
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.game.databinding.ActivityLevelHardBinding
-import androidx.recyclerview.widget.RecyclerView
-import com.example.game.elementsCreation.Elements
 
 class LevelHardActivity : AppCompatActivity(), ElementAdapter.Listener {
-    private lateinit var binding : ActivityLevelHardBinding
+    private lateinit var binding: ActivityLevelHardBinding
     private val adapter = ElementAdapter(this)
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +27,6 @@ class LevelHardActivity : AppCompatActivity(), ElementAdapter.Listener {
             adapter.addElement(elem)
         }
 
-        var selects = ArrayList<Boolean>(elements.size)
         binding.btnGet.setOnClickListener {
             val elem = Element(R.drawable.ic_launcher_foreground, "Хром")
             adapter.addElement(elem)

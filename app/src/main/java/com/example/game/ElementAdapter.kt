@@ -6,11 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.game.databinding.ElementItemBinding
 
-class ElementAdapter(val listener: Listener): RecyclerView.Adapter<ElementAdapter.ElementHolder>() {
-    val elementList = ArrayList<Element>()
+class ElementAdapter(private val listener: Listener) :
+    RecyclerView.Adapter<ElementAdapter.ElementHolder>() {
+    private val elementList = ArrayList<Element>()
+
     class ElementHolder(item: View) : RecyclerView.ViewHolder(item) {
-        val binding = ElementItemBinding.bind(item)
-        fun bind(element : Element, listener: Listener) = with(binding) {
+        private val binding = ElementItemBinding.bind(item)
+        fun bind(element: Element, listener: Listener) = with(binding) {
             binding.ivItem.setImageResource(element.imageId)
             binding.label.text = element.title
             itemView.setOnClickListener {
@@ -31,10 +33,23 @@ class ElementAdapter(val listener: Listener): RecyclerView.Adapter<ElementAdapte
     override fun getItemCount(): Int {
         return elementList.size
     }
-    fun addElement(element: Element) {
-        elementList.add(element)
-        notifyDataSetChanged()
+
+    /**
+    Добавляет элемент в RecyclerView.
+    Если добавляемый элемент НЕ содержался в RecyclerView и был добавлен, возвращает true.
+    Если добавляемый элемент содержался в RecyclerView и НЕ был добавлен, возвращает false.
+     */
+    fun addElement(element: Element): Boolean {
+        if (!elementList.contains(element)) {
+            var indexToInsert =
+                elementList.indexOfLast { elInList -> elInList.title < element.title }
+            elementList.add(++indexToInsert, element)
+            notifyItemInserted(indexToInsert)
+            return true
+        }
+        return false
     }
+
     interface Listener {
         fun onClick(element: Element)
     }
