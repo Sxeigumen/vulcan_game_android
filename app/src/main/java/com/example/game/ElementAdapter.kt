@@ -8,32 +8,32 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.game.databinding.ElementItemBinding
 
 class ElementAdapter(private val listener: Listener) :
-    RecyclerView.Adapter<ElementAdapter.ElementHolder>() {
-    private val elementList = ArrayList<Element>()
+    RecyclerView.Adapter<ElementAdapter.ItemHolder>() {
+    private val itemList = ArrayList<Element>()
 
-    class ElementHolder(item: View) : RecyclerView.ViewHolder(item) {
+    class ItemHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ElementItemBinding.bind(item)
-        fun bind(element: Element, listener: Listener) = with(binding) {
-            binding.ivItem.setImageResource(element.imageId)
-            binding.label.text = element.title
+        fun bind(item: Element, listener: Listener) = with(binding) {
+            binding.imageItem.setImageResource(item.ImageId)
+            binding.nameItem.text = item.NameId
             itemView.setOnClickListener {
                 Log.i("fisrt", "test2")
-                listener.onClick(element)
+                listener.onClick(item)
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ElementHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.element_item, parent, false)
-        return ElementHolder(view)
+        return ItemHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ElementHolder, position: Int) {
-        holder.bind(elementList[position], listener)
+    override fun onBindViewHolder(holder: ItemHolder, position: Int) {
+        holder.bind(itemList[position], listener)
     }
 
     override fun getItemCount(): Int {
-        return elementList.size
+        return itemList.size
     }
 
     /**
@@ -41,11 +41,11 @@ class ElementAdapter(private val listener: Listener) :
     Если добавляемый элемент НЕ содержался в RecyclerView и был добавлен, возвращает true.
     Если добавляемый элемент содержался в RecyclerView и НЕ был добавлен, возвращает false.
      */
-    fun addElement(element: Element): Boolean {
-        if (!elementList.contains(element)) {
+    fun addElement(item: Element): Boolean {
+        if (!itemList.contains(item)) {
             var indexToInsert =
-                elementList.indexOfLast { elInList -> elInList.title < element.title }
-            elementList.add(++indexToInsert, element)
+                itemList.indexOfLast { elInList -> elInList.NameId < item.NameId }
+            itemList.add(++indexToInsert, item)
             notifyItemInserted(indexToInsert)
             return true
         }
