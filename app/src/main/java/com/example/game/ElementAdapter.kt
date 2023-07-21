@@ -1,5 +1,6 @@
 package com.example.game
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ class ElementAdapter(private val listener: Listener) :
             binding.ivItem.setImageResource(element.imageId)
             binding.label.text = element.title
             itemView.setOnClickListener {
+                Log.i("fisrt", "test2")
                 listener.onClick(element)
             }
         }

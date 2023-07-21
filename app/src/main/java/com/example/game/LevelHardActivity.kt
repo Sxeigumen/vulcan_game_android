@@ -1,62 +1,46 @@
 package com.example.game
 
 import android.annotation.SuppressLint
-import android.content.Intent
+import android.app.Activity
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
+import androidx.activity.result.registerForActivityResult
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.game.databinding.ActivityLevelHardBinding
+import com.example.game.databinding.FragmentMainBinding
 
-class LevelHardActivity : AppCompatActivity(), ElementAdapter.Listener {
-    private lateinit var binding: ActivityLevelHardBinding
+class LevelHardActivity : AppCompatActivity(){
+    private lateinit var binding : ActivityLevelHardBinding
+    private val dataModel: DataModel by viewModels()
+    lateinit var navController: NavController
     private val adapter = ElementAdapter(this)
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLevelHardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        init()
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.place2) as NavHostFragment
+        navController = navHostFragment.navController
+        MAIN = this
+        openFrag(Fragment_list.newInstance(), R.id.place1)
+        openFrag(Fragment_main.newInstance(), R.id.place2)
+        openFrag(Fragment_action.newInstance(), R.id.place3)
+    }
+    fun replaceFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.place2, fragment)
+        transaction.commit()
+    }
 
-        val elements = mutableListOf(
-            "Водород", "Кислород", "Марганец", "Фтор"
-        )
-        for (element in elements) {
-            val elem = Element(R.drawable.ic_launcher_foreground, element)
-            adapter.addElement(elem)
-        }
-
-        binding.btnGet.setOnClickListener {
-            val elem = Element(R.drawable.ic_launcher_foreground, "Хром")
-            adapter.addElement(elem)
-            /*if (binding.cell1.isEmpty() or binding.cell2.isEmpty() or binding.cell3.isEmpty()) {
-                Toast.makeText(this, "Заполните все ячейки", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Ничего не находится:(", Toast.LENGTH_SHORT).show()
-                if (binding.iv1.id == R.drawable.water && binding.iv2.id == R.drawable.oxigen && binding.iv3.id == R.drawable.water)
-                {
-                    elements.add("Вода")
-                    adapter.notifyDataSetChanged()
-                }
-                if (binding.iv1.id == R.drawable.marganec && binding.iv2.id == R.drawable.ftor && binding.iv3.id == R.drawable.ftor)
-                {
-                    elements.add("Фторид марганца")
-                    adapter.notifyDataSetChanged()
-                }
-            }*/
-
-        }
-
-        binding.iv1.setOnClickListener {
-            Toast.makeText(this, "Clicked 1!", Toast.LENGTH_SHORT).show()
-        }
-        binding.iv2.setOnClickListener {
-            Toast.makeText(this, "Clicked 2!", Toast.LENGTH_SHORT).show()
-        }
-        binding.iv3.setOnClickListener {
-            Toast.makeText(this, "Clicked 3!", Toast.LENGTH_SHORT).show()
-        }
+    private fun openFrag(frag: Fragment, idHolder: Int){
+        supportFragmentManager
+            .beginTransaction()
+            .replace(idHolder, frag)
+            .commit()
     }
 
     /*protected fun onListItemClick(l: ListView?, v: View?, position: Int, id: Long) {

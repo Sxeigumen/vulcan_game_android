@@ -1,5 +1,7 @@
 package com.example.game
 
+lateinit var MAIN:LevelHardActivity
+
 object Constants {
     const val USER_NAME: String = "user_name"
     const val TOTAL_QUESTIONS: String = "total_question"

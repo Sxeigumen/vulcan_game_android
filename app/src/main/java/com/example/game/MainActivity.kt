@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         buttonStart.setOnClickListener {
             if (etName.text.toString().isEmpty()) {
-                Toast.makeText(this, "Please enten your name", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, MenuActivity::class.java)
                 intent.putExtra(Constants.USER_NAME, etName.text.toString())
