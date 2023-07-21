@@ -2,18 +2,21 @@ package com.example.game
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.game.databinding.ActivityLevelHardBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.example.game.elementsCreation.Elements
 
-class LevelHardActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLevelHardBinding
-    private val adapter = ElementAdapter()
-
+class LevelHardActivity : AppCompatActivity(), ElementAdapter.Listener {
+    private lateinit var binding : ActivityLevelHardBinding
+    private val adapter = ElementAdapter(this)
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +32,7 @@ class LevelHardActivity : AppCompatActivity() {
             adapter.addElement(elem)
         }
 
+        var selects = ArrayList<Boolean>(elements.size)
         binding.btnGet.setOnClickListener {
             val elem = Element(R.drawable.ic_launcher_foreground, "Хром")
             adapter.addElement(elem)
@@ -49,14 +53,7 @@ class LevelHardActivity : AppCompatActivity() {
             }*/
 
         }
-        /*binding.recListView.setOnItemClickListener { parent, view, position, id ->
-            Toast.makeText(
-                this,
-                "Item in position $position clicked",
-                Toast.LENGTH_LONG
-            ).show()
-            true
-        }*/
+
         binding.iv1.setOnClickListener {
             Toast.makeText(this, "Clicked 1!", Toast.LENGTH_SHORT).show()
         }
@@ -84,4 +81,19 @@ class LevelHardActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    override fun onClick(element: Element) {
+        Toast.makeText(this, "Clicked  on ${element.title}", Toast.LENGTH_SHORT).show()
+    }
+//    private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
+//        defaultOptionsView()
+//        mSelectedOptionPosition = selectedOptionNum
+//
+//        tv.setTextColor(Color.parseColor("#363A43"))
+//        tv.setTypeface(tv.typeface, Typeface.BOLD)
+//        tv.background = ContextCompat.getDrawable(
+//            this,
+//            R.drawable.selected_option_border_bg
+//        )
+//    }
 }
