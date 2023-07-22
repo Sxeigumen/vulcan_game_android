@@ -29,4 +29,11 @@ class Elements() : HashMap<Element, UInt>() {
             super.put(element, 1u)
         }
     }
+
+    fun remove(imageId: Int) {
+        val key = super.keys.find { element -> element.ImageId == imageId }
+        if (key != null) {
+            super.replace(key, super.get(key)!! - 1u)
+        }
+    }
 }
