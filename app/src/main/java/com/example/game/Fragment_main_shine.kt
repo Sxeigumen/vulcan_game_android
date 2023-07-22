@@ -59,7 +59,7 @@ class Fragment_main_shine : Fragment() {
         Log.i("test", "testShine")
         binding.iv1Shine.setImageDrawable(null)
         binding.iv1Shine.setOnClickListener {
-            if(binding.iv1Shine.drawable != null){
+            if (binding.iv1Shine.drawable != null) {
                 binding.iv1Shine.visibility = View.INVISIBLE
                 freeBoxIndex_shine--
                 Log.i("elements", imageIdList[0].toString())
@@ -68,12 +68,20 @@ class Fragment_main_shine : Fragment() {
             }
         }
         binding.btnGetShine.setOnClickListener {
-            val resElement = ShineResult.get(elements)
+            val resElements = ShineResult.get(elements)
 //            for (el in elements) {
 //                Toast.makeText(context, el.toString(), Toast.LENGTH_LONG).show()
 //            }
-            if (resElement != null) {
-                dataModel.message.value = resElement
+            if (resElements != null) {
+                for (resElement in resElements) {
+                    dataModel.message.value = resElement
+                    Toast.makeText(
+                        context,
+                        "Получен элемент ${resElement.NameId}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                binding.iv1Shine.callOnClick()
             } else {
                 Toast.makeText(context, R.string.noResult, Toast.LENGTH_LONG).show()
             }

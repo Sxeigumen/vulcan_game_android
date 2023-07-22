@@ -110,12 +110,22 @@ class Fragment_main : Fragment() {
         }
 
         binding.btnGetMain.setOnClickListener {
-            val resElement = MixResults.get(elements)
+            val resElements = MixResults.get(elements)
 //            for (el in elements) {
 //                Toast.makeText(context, el.toString(), Toast.LENGTH_LONG).show()
 //            }
-            if (resElement != null) {
-                dataModel.message.value = resElement
+            if (resElements != null) {
+                for (resElement in resElements) {
+                    dataModel.message.value = resElement
+                    Toast.makeText(
+                        context,
+                        "Получен элемент ${resElement.NameId}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                binding.iv3Main.callOnClick()
+                binding.iv2Main.callOnClick()
+                binding.iv1Main.callOnClick()
             } else {
                 Toast.makeText(context, R.string.noResult, Toast.LENGTH_LONG).show()
             }

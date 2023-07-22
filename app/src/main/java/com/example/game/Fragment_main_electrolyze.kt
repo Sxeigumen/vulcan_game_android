@@ -59,7 +59,7 @@ class Fragment_main_electrolyze : Fragment() {
         Log.i("test", "testElec")
         binding.iv1Elec.setImageDrawable(null)
         binding.iv1Elec.setOnClickListener {
-            if(binding.iv1Elec.drawable != null){
+            if (binding.iv1Elec.drawable != null) {
                 binding.iv1Elec.visibility = View.INVISIBLE
                 freeBoxIndex_elec--
                 Log.i("elements", imageIdList[0].toString())
@@ -68,12 +68,20 @@ class Fragment_main_electrolyze : Fragment() {
             }
         }
         binding.btnGetElec.setOnClickListener {
-            val resElement = ElectrolyzeResult.get(elements)
+            val resElements = ElectrolyzeResult.get(elements)
 //            for (el in elements) {
 //                Toast.makeText(context, el.toString(), Toast.LENGTH_LONG).show()
 //            }
-            if (resElement != null) {
-                dataModel.message.value = resElement
+            if (resElements != null) {
+                for (resElement in resElements) {
+                    dataModel.message.value = resElement
+                    Toast.makeText(
+                        context,
+                        "Получен элемент ${resElement.NameId}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                binding.iv1Elec.callOnClick()
             } else {
                 Toast.makeText(context, R.string.noResult, Toast.LENGTH_LONG).show()
             }

@@ -22,6 +22,7 @@ class Fragment_main_heat : Fragment() {
     private val dataModel: DataModel by activityViewModels()
     lateinit var binding: FragmentMainHeatBinding
     private var freeBoxIndex_heat: Int = 0
+
     /** Массив выбранных элементов */
     private val elements = Elements()
 
@@ -39,6 +40,7 @@ class Fragment_main_heat : Fragment() {
                 0 -> {
                     freeBoxIndex_heat++
                 }
+
                 1 -> {
                     binding.iv1Heat.visibility = View.VISIBLE
                     binding.iv1Heat.setImageResource(it.ImageId)
@@ -47,6 +49,7 @@ class Fragment_main_heat : Fragment() {
                     imageIdList.add(it.ImageId)
                     freeBoxIndex_heat++
                 }
+
                 else -> Toast.makeText(context, R.string.containersFilled, Toast.LENGTH_LONG)
                     .show()
             }
@@ -59,7 +62,7 @@ class Fragment_main_heat : Fragment() {
         Log.i("test", "testHeat")
         binding.iv1Heat.setImageDrawable(null)
         binding.iv1Heat.setOnClickListener {
-            if(binding.iv1Heat.drawable != null){
+            if (binding.iv1Heat.drawable != null) {
                 binding.iv1Heat.visibility = View.INVISIBLE
                 freeBoxIndex_heat--
                 Log.i("elements", imageIdList[0].toString())
@@ -68,12 +71,20 @@ class Fragment_main_heat : Fragment() {
             }
         }
         binding.btnGetHeat.setOnClickListener {
-            val resElement = HeatResult.get(elements)
+            val resElements = HeatResult.get(elements)
 //            for (el in elements) {
 //                Toast.makeText(context, el.toString(), Toast.LENGTH_LONG).show()
 //            }
-            if (resElement != null) {
-                dataModel.message.value = resElement
+            if (resElements != null) {
+                for (resElement in resElements) {
+                    dataModel.message.value = resElement
+                    Toast.makeText(
+                        context,
+                        "Получен элемент ${resElement.NameId}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                binding.iv1Heat.callOnClick()
             } else {
                 Toast.makeText(context, R.string.noResult, Toast.LENGTH_LONG).show()
             }

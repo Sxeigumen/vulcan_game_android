@@ -71,12 +71,20 @@ class Fragment_main_cool : Fragment() {
             }
         }
         binding.btnGetCool.setOnClickListener {
-            val resElement = CoolResult.get(elements)
+            val resElements = CoolResult.get(elements)
 //            for (el in elements) {
 //                Toast.makeText(context, el.toString(), Toast.LENGTH_LONG).show()
 //            }
-            if (resElement != null) {
-                dataModel.message.value = resElement
+            if (resElements != null) {
+                for (resElement in resElements) {
+                    dataModel.message.value = resElement
+                    Toast.makeText(
+                        context,
+                        "Получен элемент ${resElement.NameId}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                binding.iv1Cool.callOnClick()
             } else {
                 Toast.makeText(context, R.string.noResult, Toast.LENGTH_LONG).show()
             }
