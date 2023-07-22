@@ -1,6 +1,7 @@
 package com.example.game
 
 lateinit var MAIN:LevelHardActivity
+var ELECTROLYZE: Boolean = false
 
 object Constants {
     const val USER_NAME: String = "user_name"

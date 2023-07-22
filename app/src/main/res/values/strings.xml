@@ -12,4 +12,5 @@
     <string name="electrolizButton">Электролиз</string>
     <string name="noResult">Невозможно создать новый элемент из выбранных элементов.</string>
     <string name="containersFilled">Все ячейки заполнены.</string>
+    <string name="notHaveElec">Электричество ещё не изучено</string>
 </resources>

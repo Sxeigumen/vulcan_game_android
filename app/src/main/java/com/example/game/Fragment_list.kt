@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,16 +24,18 @@ class Fragment_list : Fragment(), ElementAdapter.Listener {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentListBinding.inflate(inflater)
-        // Inflate the layout for this fragment
+        dataModel.message.observe(viewLifecycleOwner, Observer {
+            if(it.ImageId == R.drawable.tok){
+                ELECTROLYZE = true
+            }
+            elementAdapter.add(it)
+        })
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         elementAdapter = ElementAdapter(this)
-        dataModel.message.observe(viewLifecycleOwner, Observer {
-            elementAdapter.add(it)
-        })
         generate(elementAdapter)
         val recyclerView: RecyclerView = view.findViewById(R.id.ListsItem)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -48,13 +52,12 @@ class Fragment_list : Fragment(), ElementAdapter.Listener {
             Element(R.drawable.vodorod, "Водород"),
             Element(R.drawable.kislorod, "Кислород"),
             Element(R.drawable.marganec, "Марганец"),
-            Element(R.drawable.ftor, "Фтор")
+            Element(R.drawable.ftor, "Фтор"),
+            Element(R.drawable.sol, "Соль"),
+            Element(R.drawable.kremniy, "Кремний")
         )
         for (element in elements) {
             adapter.add(element)
-        }
-        for (counter in 1..30) {
-            adapter.add(Element(R.drawable.ftor, "element $counter"))
         }
     }
 

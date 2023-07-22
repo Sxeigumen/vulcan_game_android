@@ -11,7 +11,6 @@ import com.example.game.databinding.ActivityLevelHardBinding
 
 class LevelHardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLevelHardBinding
-    private val dataModel: DataModel by viewModels()
     lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +29,7 @@ class LevelHardActivity : AppCompatActivity() {
     fun replaceFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.place2, fragment)
+        transaction.setReorderingAllowed(true)
         transaction.commit()
     }
 

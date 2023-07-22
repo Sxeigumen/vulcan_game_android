@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import com.example.game.databinding.FragmentActionBinding
@@ -40,7 +41,12 @@ class Fragment_action : Fragment() {
         }
 
         binding.btnElectro.setOnClickListener{
-            MAIN.replaceFragment(FragmentElec)
+            if(ELECTROLYZE){
+                MAIN.replaceFragment(FragmentElec)
+            }
+            else{
+                Toast.makeText(context, R.string.notHaveElec, Toast.LENGTH_LONG).show()
+            }
         }
 
         binding.btnHolod.setOnClickListener{
