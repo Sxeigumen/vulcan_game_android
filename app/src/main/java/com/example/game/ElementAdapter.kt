@@ -41,7 +41,7 @@ class ElementAdapter(private val listener: Listener) :
     Если добавляемый элемент НЕ содержался в RecyclerView и был добавлен, возвращает true.
     Если добавляемый элемент содержался в RecyclerView и НЕ был добавлен, возвращает false.
      */
-    fun addElement(item: Element): Boolean {
+    fun add(item: Element): Boolean {
         if (!itemList.contains(item)) {
             var indexToInsert =
                 itemList.indexOfLast { elInList -> elInList.NameId < item.NameId }

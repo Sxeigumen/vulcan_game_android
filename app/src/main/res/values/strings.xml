@@ -10,4 +10,6 @@
     <string name="ohlazhdeniyeButton">Охлаждение</string>
     <string name="izlucheniyeButton">Световое излучение</string>
     <string name="electrolizButton">Электролиз</string>
+    <string name="noResult">Невозможно создать новый элемент из выбранных элементов.</string>
+    <string name="containersFilled">Все ячейки заполнены.</string>
 </resources>
