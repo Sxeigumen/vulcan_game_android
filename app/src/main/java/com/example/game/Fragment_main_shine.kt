@@ -39,7 +39,7 @@ class Fragment_main_shine : Fragment() {
             when (freeBoxIndex) {
                 1 -> {
                     binding.iv1Shine.visibility = View.VISIBLE
-                    binding.iv1Shine.setImageResource(it)
+                    binding.iv1Shine.setImageResource(it.ImageId)
                     freeBoxIndex++
                 }
                 else -> Toast.makeText(context, "All cells are filled", Toast.LENGTH_LONG)

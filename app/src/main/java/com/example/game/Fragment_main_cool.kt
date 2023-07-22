@@ -29,7 +29,7 @@ class Fragment_main_cool : Fragment() {
         Log.i("test", "testCool")
         binding.iv1Cool.setImageDrawable(null)
         binding.iv1Cool.setOnClickListener {
-            if(binding.iv1Cool.drawable != null){
+            if (binding.iv1Cool.drawable != null) {
                 binding.iv1Cool.visibility = View.INVISIBLE
                 freeBoxIndex--
             }
@@ -39,9 +39,10 @@ class Fragment_main_cool : Fragment() {
             when (freeBoxIndex) {
                 1 -> {
                     binding.iv1Cool.visibility = View.VISIBLE
-                    binding.iv1Cool.setImageResource(it)
+                    binding.iv1Cool.setImageResource(it.ImageId)
                     freeBoxIndex++
                 }
+
                 else -> Toast.makeText(context, "All cells are filled", Toast.LENGTH_LONG)
                     .show()
             }

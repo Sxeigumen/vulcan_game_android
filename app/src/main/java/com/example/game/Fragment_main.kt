@@ -57,19 +57,19 @@ class Fragment_main : Fragment() {
             when (freeBoxIndex) {
                 1, 4, 6, 9 -> {
                     binding.iv1Main.visibility = View.VISIBLE
-                    binding.iv1Main.setImageResource(it)
+                    binding.iv1Main.setImageResource(it.ImageId)
                     freeBoxIndex++
                 }
 
                 2, 7 -> {
                     binding.iv2Main.visibility = View.VISIBLE
-                    binding.iv2Main.setImageResource(it)
+                    binding.iv2Main.setImageResource(it.ImageId)
                     freeBoxIndex += 3
                 }
 
                 5 -> {
                     binding.iv3Main.visibility = View.VISIBLE
-                    binding.iv3Main.setImageResource(it)
+                    binding.iv3Main.setImageResource(it.ImageId)
                     freeBoxIndex += 5
                 }
 

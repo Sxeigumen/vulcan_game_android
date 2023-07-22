@@ -39,7 +39,7 @@ class Fragment_main_heat : Fragment() {
             when (freeBoxIndex) {
                 1 -> {
                     binding.iv1Heat.visibility = View.VISIBLE
-                    binding.iv1Heat.setImageResource(it)
+                    binding.iv1Heat.setImageResource(it.ImageId)
                     freeBoxIndex++
                 }
                 else -> Toast.makeText(context, "All cells are filled", Toast.LENGTH_LONG)

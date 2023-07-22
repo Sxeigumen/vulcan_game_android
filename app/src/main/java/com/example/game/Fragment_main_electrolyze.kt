@@ -39,7 +39,7 @@ class Fragment_main_electrolyze : Fragment() {
             when (freeBoxIndex) {
                 1 -> {
                     binding.iv1Elec.visibility = View.VISIBLE
-                    binding.iv1Elec.setImageResource(it)
+                    binding.iv1Elec.setImageResource(it.ImageId)
                     freeBoxIndex++
                 }
                 else -> Toast.makeText(context, "All cells are filled", Toast.LENGTH_LONG)
