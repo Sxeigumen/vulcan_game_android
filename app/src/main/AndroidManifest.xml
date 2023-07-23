@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,7 +18,7 @@
             android:name=".LevelHardActivity"
             android:exported="true"
             android:screenOrientation="landscape"
-            android:theme="@style/NoactionBar"/>
+            android:theme="@style/NoactionBar" />
         <activity
             android:name=".LevelAverageActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

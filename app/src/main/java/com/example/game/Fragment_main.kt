@@ -1,19 +1,21 @@
 package com.example.game
 
+import android.accounts.NetworkErrorException
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.example.game.ServerCommunication.Client
+import com.example.game.ServerCommunication.ServerInfo
 import com.example.game.databinding.FragmentMainBinding
 import com.example.game.elementsCreation.Elements
 import com.example.game.elementsCreation.MixResults
+import io.reactivex.rxjava3.disposables.Disposable
 
 
 class Fragment_main : Fragment() {
@@ -26,10 +28,20 @@ class Fragment_main : Fragment() {
 
     /** Массив imageId для корректного удаления выбранных элементов */
     private val imageIdList = arrayListOf<Int>()
+
+    /** variables for server connection */
+//    private val serverInfo = ServerInfo("10.0.41.59", 20_000)
+    private val serverInfo = ServerInfo("192.168.1.9", 12345)
+    private lateinit var client: Client
+    private var connectedToServer = false
+
+    /** listener for server messages */
+    private lateinit var messageListener: Disposable
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMainBinding.inflate(inflater)
         dataModel.message.observe(viewLifecycleOwner, Observer {
             Log.i("fisrt", "test")
@@ -37,6 +49,7 @@ class Fragment_main : Fragment() {
                 0 -> {
                     freeBoxIndex_main++
                 }
+
                 1, 4, 6, 9 -> {
                     Log.i("test", "add1")
                     binding.iv1Main.visibility = View.VISIBLE
@@ -111,9 +124,6 @@ class Fragment_main : Fragment() {
 
         binding.btnGetMain.setOnClickListener {
             val resElements = MixResults.get(elements)
-//            for (el in elements) {
-//                Toast.makeText(context, el.toString(), Toast.LENGTH_LONG).show()
-//            }
             if (resElements != null) {
                 for (resElement in resElements) {
                     dataModel.message.value = resElement
@@ -130,6 +140,30 @@ class Fragment_main : Fragment() {
                 Toast.makeText(context, R.string.noResult, Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        connectedToServer = true
+        client = Client(serverInfo)
+        messageListener = client.messageEmitter.subscribe(
+            /** onNext - получение сообщения от сервера */
+            { Log.d("messageListener", it) },
+            /** onError */
+            {
+                when {
+                    (it is NetworkErrorException) -> {
+                        connectedToServer = false
+                    }
+                }
+            },
+        )
+        client.run()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        client.close()
     }
 
     companion object {
