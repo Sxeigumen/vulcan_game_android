@@ -61,7 +61,6 @@ class Client(_serverInfo: ServerInfo) : Thread() {
 
                 /** Сообщение инициализации */
                 CoroutineScope(Dispatchers.IO).launch { send(HttpRequests.init) }
-//                if (isRunning) {
                 val buffer = ByteArray(1024)
                 var lastByteNum: Int
                 while (true) {
@@ -82,24 +81,15 @@ class Client(_serverInfo: ServerInfo) : Thread() {
                         break
                     }
                 }
-//                }
-
             }
         })
     }
 
     fun close() {
-        CoroutineScope(Dispatchers.IO).launch {
-            send(HttpRequests.disconnect)
+        if (connected) {
+            CoroutineScope(Dispatchers.IO).launch {
+                send(HttpRequests.disconnect)
 
-            /**
-             * Сообщение для UI о закрытии соединения
-             * также используется для закрытия messageEmitter'а
-             * может быть проигнорирован в UI
-             * */
-//            messageEmitter.onComplete()
-
-            if (socket != null) {
                 executor.shutdownNow()
                 inputStream.close()
                 outputStream.close()

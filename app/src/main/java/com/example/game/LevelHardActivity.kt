@@ -19,9 +19,8 @@ class LevelHardActivity : AppCompatActivity() {
 
     /** variables for server connection */
 //    private val serverInfo = ServerInfo("10.0.41.59", 20_000)
-    private val serverInfo = ServerInfo("10.0.41.246", 12345)
-
-    //    private val serverInfo = ServerInfo("192.168.1.9", 12345)
+//    private val serverInfo = ServerInfo("10.0.41.246", 12345)
+    private val serverInfo = ServerInfo("192.168.1.68", 12345)
     private lateinit var client: Client
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +43,6 @@ class LevelHardActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        /** Закрытие клиента */
         client.close()
     }
 
