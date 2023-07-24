@@ -11,11 +11,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.game.ServerCommunication.Client
-import com.example.game.ServerCommunication.ServerInfo
+import com.example.game.ServerCommunication.ClientDataModel
 import com.example.game.databinding.FragmentMainBinding
 import com.example.game.elementsCreation.Elements
 import com.example.game.elementsCreation.MixResults
 import io.reactivex.rxjava3.disposables.Disposable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class Fragment_main : Fragment() {
@@ -29,13 +32,13 @@ class Fragment_main : Fragment() {
     /** Массив imageId для корректного удаления выбранных элементов */
     private val imageIdList = arrayListOf<Int>()
 
-    /** variables for server connection */
-//    private val serverInfo = ServerInfo("10.0.41.59", 20_000)
-    private val serverInfo = ServerInfo("192.168.1.9", 12345)
-    private lateinit var client: Client
-    private var connectedToServer = false
+    /** Принятие клиента от activity */
+    private val clientDataModel: ClientDataModel by activityViewModels()
 
-    /** listener for server messages */
+    /** Клиент для связи с сервером */
+    private lateinit var client: Client
+
+    /** Слушатель сообщений сервера */
     private lateinit var messageListener: Disposable
 
     override fun onCreateView(
@@ -43,6 +46,23 @@ class Fragment_main : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainBinding.inflate(inflater)
+
+        /** Инициализация клиента из activity*/
+        clientDataModel.client.observe(viewLifecycleOwner) {
+            client = it
+            messageListener = it.messageEmitter.subscribe(
+                /** onNext */
+                { stringFromServer -> binding.tempTextView.text = stringFromServer },
+                /** onError */
+                {
+                    if (it is NetworkErrorException) {
+                        Toast.makeText(context, "Couldn't connect to server", Toast.LENGTH_LONG)
+                            .show()
+                    }
+                },
+            )
+        }
+
         dataModel.message.observe(viewLifecycleOwner, Observer {
             Log.i("fisrt", "test")
             when (freeBoxIndex_main) {
@@ -99,7 +119,6 @@ class Fragment_main : Fragment() {
                 elements.remove(imageIdList[0])
                 imageIdList.removeAt(0)
             }
-
         }
 
         binding.iv2Main.setOnClickListener {
@@ -139,31 +158,12 @@ class Fragment_main : Fragment() {
             } else {
                 Toast.makeText(context, R.string.noResult, Toast.LENGTH_LONG).show()
             }
+
+            /** Отправка сообщения серверу */
+            if (client.connected) {
+                CoroutineScope(Dispatchers.IO).launch { client.send("Get button pressed") }
+            }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        connectedToServer = true
-        client = Client(serverInfo)
-        messageListener = client.messageEmitter.subscribe(
-            /** onNext - получение сообщения от сервера */
-            { Log.d("messageListener", it) },
-            /** onError */
-            {
-                when {
-                    (it is NetworkErrorException) -> {
-                        connectedToServer = false
-                    }
-                }
-            },
-        )
-        client.run()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        client.close()
     }
 
     companion object {

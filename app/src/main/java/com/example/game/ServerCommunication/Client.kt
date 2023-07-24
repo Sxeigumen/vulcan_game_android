@@ -14,6 +14,7 @@ import java.util.concurrent.Executors
 data class ServerInfo(val hostAddress: String, val port: Int)
 
 class Client(_serverInfo: ServerInfo) : Thread() {
+    val connected: Boolean get() = socket != null
 
     /** Передатчик сообщений в UI*/
     val messageEmitter = PublishSubject.create<String>()
@@ -40,7 +41,6 @@ class Client(_serverInfo: ServerInfo) : Thread() {
     suspend fun send(string: String) = withContext(Dispatchers.IO) {
         try {
             outputStream.write(string.toByteArray())
-            messageEmitter.onNext(string)
         } catch (ex: Exception) {
             messageEmitter.onError(ex)
         }

@@ -1,22 +1,24 @@
 package com.example.game
 
+import android.accounts.NetworkErrorException
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.example.game.databinding.FragmentMainCoolBinding
+import com.example.game.ServerCommunication.Client
+import com.example.game.ServerCommunication.ClientDataModel
 import com.example.game.databinding.FragmentMainHeatBinding
 import com.example.game.elementsCreation.Elements
 import com.example.game.elementsCreation.HeatResult
-import com.example.game.elementsCreation.MixResults
+import io.reactivex.rxjava3.disposables.Disposable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class Fragment_main_heat : Fragment() {
     private val dataModel: DataModel by activityViewModels()
@@ -28,11 +30,38 @@ class Fragment_main_heat : Fragment() {
 
     /** Массив imageId для корректного удаления выбранных элементов */
     private val imageIdList = arrayListOf<Int>()
+
+    /** Принятие клиента от activity */
+    private val clientDataModel: ClientDataModel by activityViewModels()
+
+    /** Клиент для связи с сервером */
+    private lateinit var client: Client
+
+    /** Слушатель сообщений сервера */
+    private lateinit var messageListener: Disposable
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainHeatBinding.inflate(inflater)
+
+        /** Инициализация клиента из activity*/
+        clientDataModel.client.observe(viewLifecycleOwner) {
+            client = it
+            messageListener = it.messageEmitter.subscribe(
+                /** onNext */
+                { stringFromServer -> binding.tempTextView.text = stringFromServer },
+                /** onError */
+                {
+                    if (it is NetworkErrorException) {
+                        Toast.makeText(context, "Couldn't connect to server", Toast.LENGTH_LONG)
+                            .show()
+                    }
+                },
+            )
+        }
+
         elements.empty()
         imageIdList.clear()
         dataModel.message.observe(viewLifecycleOwner, Observer {
@@ -87,6 +116,10 @@ class Fragment_main_heat : Fragment() {
                 binding.iv1Heat.callOnClick()
             } else {
                 Toast.makeText(context, R.string.noResult, Toast.LENGTH_LONG).show()
+            }
+            /** Отправка сообщения серверу */
+            if (client.connected) {
+                CoroutineScope(Dispatchers.IO).launch { client.send("Get button pressed") }
             }
         }
     }
