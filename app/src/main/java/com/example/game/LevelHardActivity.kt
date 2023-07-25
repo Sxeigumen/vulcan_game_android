@@ -2,6 +2,7 @@ package com.example.game
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -23,7 +24,7 @@ class LevelHardActivity : AppCompatActivity() {
 
     //    private val serverInfo = ServerInfo("192.168.1.9", 12345)
     private lateinit var client: Client
-
+    var toast: Toast? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLevelHardBinding.inflate(layoutInflater)
@@ -46,6 +47,14 @@ class LevelHardActivity : AppCompatActivity() {
         super.onStop()
         /** Закрытие клиента */
         client.close()
+    }
+
+    fun customToast(string: Int){
+        if (toast != null) {
+            toast?.cancel()
+        }
+        toast = Toast.makeText(this, string, Toast.LENGTH_LONG)
+        toast?.show()
     }
 
     fun replaceFragment(fragment: Fragment) {

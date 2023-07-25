@@ -1,8 +1,15 @@
 package com.example.game
 
+import android.text.BoringLayout
+
 lateinit var MAIN:LevelHardActivity
 var ELECTROLYZE: Boolean = false
-
+var FIRSTMIX: Boolean = true
+var FIRSTCOOL: Boolean = true
+var FIRSTHEAT: Boolean = true
+var FIRSTSHINE: Boolean = true
+var FIRSTELECTROLYZE: Boolean = true
+var GETNEWELEMENT: Boolean = false
 object Constants {
     const val USER_NAME: String = "user_name"
     const val TOTAL_QUESTIONS: String = "total_question"
