@@ -51,17 +51,11 @@ class Fragment_main : Fragment() {
         clientDataModel.client.observe(viewLifecycleOwner) {
             client = it
             if (client.connected) {
-                messageListener = it.messageEmitter.subscribe(
+                messageListener = it.messageEmitter.subscribe {
                     /** onNext */
-                    { stringFromServer -> binding.tempTextView.text = stringFromServer },
-                    /** onError */
-                    {
-                        if (it is NetworkErrorException) {
-                            Toast.makeText(context, "Couldn't connect to server", Toast.LENGTH_LONG)
-                                .show()
-                        }
-                    },
-                )
+                        stringFromServer ->
+                    binding.tempTextView.text = stringFromServer
+                }
             }
         }
 

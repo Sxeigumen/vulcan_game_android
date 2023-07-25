@@ -28,12 +28,26 @@ class Client(_serverInfo: ServerInfo) : Thread() {
     private val executor = Executors.newSingleThreadExecutor()
 
     private object HttpRequests {
-        val init = """GET /device HTTP/1.1
+        private val header = """GET /device HTTP/1.1
             |Host: ?
-            |New Device ?
+            |New Device: ?
             |
         """.trimMargin()
-        const val disconnect = "stop"
+        val init = header + ""
+        val mix = header + ""
+        val heat = header + ""
+        val cool = header + ""
+        val shine = header + ""
+        val electrolyze = header + ""
+        val disconnect = header + "stop"
+    }
+
+    private object HttpAnswers {
+        private val header = """GET /device HTTP/1.1
+            |Host: ?
+            |New Device: ?
+            |
+        """.trimMargin()
     }
 
 
@@ -94,6 +108,7 @@ class Client(_serverInfo: ServerInfo) : Thread() {
                 inputStream.close()
                 outputStream.close()
                 socket!!.close()
+                socket = null
             }
         }
     }
