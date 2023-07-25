@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">Game</string>
     <string name="unmatched_item">Face drop area for mask to be dragged</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="smeshivanieTitle">Смешивание</string>
+    <string name="getResult">Получить</string>
+    <string name="smeshivanieButton">Смешивание</string>
+    <string name="nagrevanieButton">Нагревание</string>
+    <string name="ohlazhdeniyeButton">Охлаждение</string>
+    <string name="izlucheniyeButton">Световое излучение</string>
+    <string name="electrolizButton">Электролиз</string>
+    <string name="noResult">Невозможно создать новый элемент из выбранных.</string>
+    <string name="containersFilled">Все ячейки заполнены.</string>
+    <string name="notHaveElec">Электричество ещё не изучено</string>
+    <string name="mix">Встряхните контроллер</string>
+    <string name="cool">Охладите контроллер</string>
+    <string name="shine">Посветите на контроллер</string>
+    <string name="heat">Нагрейте контроллер</string>
+    <string name="elec">Нажмите на кнопку</string>
+
 </resources>
