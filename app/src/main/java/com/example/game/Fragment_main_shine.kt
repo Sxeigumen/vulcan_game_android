@@ -1,11 +1,13 @@
 package com.example.game
 
 import android.accounts.NetworkErrorException
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -24,7 +26,7 @@ class Fragment_main_shine : Fragment() {
     private val dataModel: DataModel by activityViewModels()
     lateinit var binding: FragmentMainShineBinding
     private var freeBoxIndex_shine: Int = 0
-
+    lateinit var myDialog: Dialog
     /** Массив выбранных элементов */
     private val elements = Elements()
 
@@ -45,7 +47,9 @@ class Fragment_main_shine : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainShineBinding.inflate(inflater)
-
+        myDialog = Dialog(requireContext())
+        elements.empty()
+        imageIdList.clear()
         /** Инициализация клиента из activity*/
         clientDataModel.client.observe(viewLifecycleOwner) {
             client = it
@@ -81,8 +85,11 @@ class Fragment_main_shine : Fragment() {
                     freeBoxIndex_shine++
                 }
 
-                else -> Toast.makeText(context, R.string.containersFilled, Toast.LENGTH_LONG)
-                    .show()
+                else -> {
+                    if (!GETNEWELEMENT)
+                        MAIN.customToast(R.string.containersFilled)
+                    GETNEWELEMENT = false
+                }
             }
         })
         return binding.root
@@ -103,10 +110,13 @@ class Fragment_main_shine : Fragment() {
         }
         binding.btnGetShine.setOnClickListener {
             val resElements = ShineResult.get(elements)
-//            for (el in elements) {
-//                Toast.makeText(context, el.toString(), Toast.LENGTH_LONG).show()
-//            }
+            GETNEWELEMENT = true
             if (resElements != null) {
+                var stringResult: String = "Вы получите: "
+                for (resElement in resElements){
+                    stringResult+=resElement.NameId.toString()
+                }
+                showPopUp()
                 for (resElement in resElements) {
                     dataModel.message.value = resElement
                     Toast.makeText(
@@ -117,7 +127,7 @@ class Fragment_main_shine : Fragment() {
                 }
                 binding.iv1Shine.callOnClick()
             } else {
-                Toast.makeText(context, R.string.noResult, Toast.LENGTH_LONG).show()
+                MAIN.customToast(R.string.noResult)
             }
             /** Отправка сообщения серверу */
             if (client.connected) {
@@ -125,6 +135,14 @@ class Fragment_main_shine : Fragment() {
             }
         }
 
+    }
+    fun showPopUp(){
+        myDialog.setContentView(R.layout.custompopup_shine)
+        val textClose: TextView = myDialog.findViewById(R.id.closepopup_shine)
+        textClose.setOnClickListener{
+            myDialog.dismiss()
+        }
+        myDialog.show()
     }
 
     companion object {

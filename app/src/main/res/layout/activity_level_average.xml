@@ -26,7 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:background="@drawable/dashed_lines_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -55,7 +54,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:max="3"
+                android:max="5"
                 android:minHeight="50dp"
                 android:progress="0"
                 android:indeterminate="false"/>
@@ -69,44 +68,51 @@
                 android:textSize="14sp"
                 tools:text="0/10"/>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            android:gravity="center">
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:gravity="center"
+                android:layout_margin="10dp">
 
-            <ImageView
-                android:id="@+id/ivOptionOne"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:src="@drawable/capacitor"/>
+                <ImageView
+                    android:id="@+id/ivOptionOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/capacitor"/>
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            android:gravity="center">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:gravity="center"
+                android:layout_margin="10dp">
 
-            <ImageView
-                android:id="@+id/ivOptionTwo"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:src="@drawable/inductor"/>
+                <ImageView
+                    android:id="@+id/ivOptionTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/inductor"/>
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            android:gravity="center">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                android:gravity="center"
+                android:layout_margin="10dp">
 
-            <ImageView
-                android:id="@+id/ivOptionThree"
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:src="@drawable/resistor"/>
+                <ImageView
+                    android:id="@+id/ivOptionThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/resistor"/>
+            </LinearLayout>
         </LinearLayout>
         <Button
             android:id="@+id/btn_submit"
@@ -119,5 +125,4 @@
             android:textSize="18sp"
             android:textStyle="bold"/>
     </LinearLayout>
-
 </ScrollView>

@@ -12,7 +12,6 @@ import com.example.game.ServerCommunication.Client
 import com.example.game.ServerCommunication.ClientDataModel
 import com.example.game.ServerCommunication.ServerInfo
 import com.example.game.databinding.ActivityLevelHardBinding
-import io.reactivex.rxjava3.disposables.Disposable
 
 class LevelHardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLevelHardBinding
@@ -21,12 +20,11 @@ class LevelHardActivity : AppCompatActivity() {
 
     /** variables for server connection */
 //    private val serverInfo = ServerInfo("10.0.41.59", 20_000)
-    private val serverInfo = ServerInfo("10.0.41.237", 12345)
+    private val serverInfo = ServerInfo("10.0.41.246", 12345)
 
-    //    private val serverInfo = ServerInfo("192.168.1.68", 12345)
+    //    private val serverInfo = ServerInfo("192.168.1.9", 12345)
     private lateinit var client: Client
-    private lateinit var messageListener: Disposable
-
+    var toast: Toast? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLevelHardBinding.inflate(layoutInflater)
@@ -41,22 +39,22 @@ class LevelHardActivity : AppCompatActivity() {
 
         /** Инициализация клиента и его отправка всем клиентам */
         client = Client(serverInfo)
-        messageListener = client.messageEmitter.subscribe(
-            /** onNext */
-            {},
-            /** onError*/
-            {
-                client.close()
-                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-            },
-        )
         client.run()
         clientDataModel.client.value = client
     }
 
     override fun onStop() {
         super.onStop()
+        /** Закрытие клиента */
         client.close()
+    }
+
+    fun customToast(string: Int){
+        if (toast != null) {
+            toast?.cancel()
+        }
+        toast = Toast.makeText(this, string, Toast.LENGTH_LONG)
+        toast?.show()
     }
 
     fun replaceFragment(fragment: Fragment) {

@@ -1,15 +1,22 @@
 package com.example.game
 
+import android.text.BoringLayout
+
 lateinit var MAIN:LevelHardActivity
 var ELECTROLYZE: Boolean = false
-
+var FIRSTMIX: Boolean = true
+var FIRSTCOOL: Boolean = true
+var FIRSTHEAT: Boolean = true
+var FIRSTSHINE: Boolean = true
+var FIRSTELECTROLYZE: Boolean = true
+var GETNEWELEMENT: Boolean = false
 object Constants {
     const val USER_NAME: String = "user_name"
     const val TOTAL_QUESTIONS: String = "total_question"
     const val CORRECT_ANSWERS: String = "correct_answers"
+    const val NUMBER_OF_GAME: String = "number"
     fun getQuestions(): ArrayList<Question> {
         val questionList = ArrayList<Question>()
-
         val que1 = Question (
             1,
             "В каком году появилась первая компьютерная игра?",
@@ -23,24 +30,24 @@ object Constants {
         questionList.add(que1)
         val que2 = Question (
             2,
-            "Что за элемент представлен на фото?",
-            R.drawable.inductor,
-            "Конденсатор",
-            "Резистор",
-            "Диод",
-            "Катушка",
-            4
+            "Если одиннадцать плюс два равняются одному, чему равны девять плюс пять",
+            R.drawable.question2,
+            "Два",
+            "Шесть",
+            "Десять",
+            "Четырнадцать",
+            1
         )
         questionList.add(que2)
         val que3 = Question (
             3,
-            "Где был создан самый маленький процесоор?",
+            "У семерых братьев по сестре. Сколько всего сестер?",
             R.drawable.question3,
-            "IBM",
-            "Android",
-            "Samsung",
-            "Apple",
-            1
+            "Семь",
+            "Пять",
+            "Три",
+            "Одна",
+            4
         )
         questionList.add(que3)
         val que4 = Question (
@@ -67,35 +74,35 @@ object Constants {
         questionList.add(que5)
         val que6 = Question (
             6,
-            "Что за элемент представлен на фото?",
-            R.drawable.capacitor,
-            "Конденсатор",
-            "Катушка",
-            "Диод",
-            "Резистор",
-            1
+            "Полтора судака стоят полтора рубля. Сколько стоят 13 судаков?",
+            R.drawable.question6,
+            "15 рублей",
+            "19,5 рублей",
+            "13 рублей",
+            "16,5 рублей",
+            3
         )
         questionList.add(que6)
         val que7 = Question (
             7,
-            "Кто создал лампы накаливания?",
+            "По какой книге был снят фильм Бегущий по лезвию?",
             R.drawable.question7,
-            "Михаил Боресков",
-            "Анатолий Еперин",
-            "Валентин Вологдин",
-            "Александр Лодыгин",
-            4
+            "451 градус по Фаренгейту",
+            "Бегущий по лезвию",
+            "Мечтают ли андроиды об электроовцах?",
+            "Солярис",
+            3
         )
         questionList.add(que7)
         val que8 = Question (
             8,
-            "Где был разработан Wi-Fi?",
+            "Жаба — 3, собака — 3, корова — 2, рыба — 0. А чему равняется кошка? Почему?",
             R.drawable.question8,
-            "CNRS",
-            "Columbia University",
-            "CSIRO (Commonwealth Scientific and Industrial Research Organization)",
-            "Seoul National University",
-            3
+            "0",
+            "1",
+            "2",
+            "3",
+            4
         )
         questionList.add(que8)
         val que9 = Question (
