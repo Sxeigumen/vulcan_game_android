@@ -28,7 +28,7 @@ class Fragment_CustomPopUpElectrolyze : DialogFragment() {
     private lateinit var listenerForResult: CustomPopUpListener
 
     /** таймер, закрывающий фрагмент при отсутсвии соединения с сервером */
-    private val noConnectionTimer = object : CountDownTimer(5000, 5000) {
+    private val noConnectionTimer = object : CountDownTimer(3500, 3500) {
         override fun onTick(millisUntilFinished: Long) {}
 
         override fun onFinish() {
