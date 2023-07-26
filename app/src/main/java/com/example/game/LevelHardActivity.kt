@@ -5,25 +5,20 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.game.ServerCommunication.Client
-import com.example.game.ServerCommunication.ClientDataModel
-import com.example.game.ServerCommunication.ServerInfo
 import com.example.game.databinding.ActivityLevelHardBinding
+import com.example.game.dialogs.CustomPopUpListener
 
-class LevelHardActivity : AppCompatActivity() {
+class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
     private lateinit var binding: ActivityLevelHardBinding
     lateinit var navController: NavController
-    private val clientDataModel: ClientDataModel by viewModels()
 
-    /** variables for server connection */
-//    private val serverInfo = ServerInfo("10.0.41.59", 20_000)
-    private val serverInfo = ServerInfo("10.0.41.246", 12345)
-
-    //    private val serverInfo = ServerInfo("192.168.1.9", 12345)
-    private lateinit var client: Client
+    /** dataModel для связи с другими элементами UI */
+    private val dataModel: DataModel by viewModels()
+    private val context = this
     var toast: Toast? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,20 +31,9 @@ class LevelHardActivity : AppCompatActivity() {
         openFrag(Fragment_list.newInstance(), R.id.place1)
         openFrag(Fragment_main.newInstance(), R.id.place2)
         openFrag(Fragment_action.newInstance(), R.id.place3)
-
-        /** Инициализация клиента и его отправка всем клиентам */
-        client = Client(serverInfo)
-        client.run()
-        clientDataModel.client.value = client
     }
 
-    override fun onStop() {
-        super.onStop()
-        /** Закрытие клиента */
-        client.close()
-    }
-
-    fun customToast(string: Int){
+    fun customToast(string: Int) {
         if (toast != null) {
             toast?.cancel()
         }
@@ -75,5 +59,22 @@ class LevelHardActivity : AppCompatActivity() {
         val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    /** слушатель для удачного получения элемента */
+    override fun onSuccessfulReceive(dialog: DialogFragment) {
+        for (element in dataModel.potentialElementsToAdd.value!!) {
+            dataModel.elementToList.value = element
+        }
+    }
+
+    /** слушатель для неудачного получения элемента */
+    override fun onFailedReceive(dialog: DialogFragment) {
+        var elements = ""
+        for (element in dataModel.potentialElementsToAdd.value!!) {
+            elements += element.NameId + ' '
+        }
+        dataModel.potentialElementsToAdd.value = null
+        Toast.makeText(context, "Не удалось получить элемент $elements", Toast.LENGTH_LONG).show()
     }
 }

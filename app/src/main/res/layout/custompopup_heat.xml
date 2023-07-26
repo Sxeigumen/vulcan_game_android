@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="450dp"
     android:layout_height="320dp"
@@ -13,7 +12,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/closepopup_heat"
+            android:id="@+id/closepopup"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="end"
@@ -25,10 +24,11 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/actionTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/heat"
+            android:text="@string/loading"
             android:textSize="34sp"
             android:textStyle="bold" />
 

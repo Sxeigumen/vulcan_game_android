@@ -13,10 +13,16 @@
     <string name="noResult">Невозможно создать новый элемент из выбранных.</string>
     <string name="containersFilled">Все ячейки заполнены.</string>
     <string name="notHaveElec">Электричество ещё не изучено</string>
-    <string name="mix">Встряхните контроллер</string>
-    <string name="cool">Охладите контроллер</string>
-    <string name="shine">Посветите на контроллер</string>
-    <string name="heat">Нагрейте контроллер</string>
-    <string name="elec">Нажмите на кнопку</string>
+    <string name="loading">Загрузка…</string>
+    <string name="mixWithServer">Встряхните контроллер</string>
+    <string name="coolWithServer">Охладите контроллер</string>
+    <string name="shineWithServer">Посветите на контроллер</string>
+    <string name="heatWithServer">Нагрейте контроллер</string>
+    <string name="elecWithServer">Нажмите на кнопку</string>
+    <string name="mixNoServer">Подождите, идёт смешивание</string>
+    <string name="coolNoServer">Подождите, идёт охлаждение</string>
+    <string name="shineNoServer">Подождите, идёт облучение электро-магнитными волнами</string>
+    <string name="heatNoServer">Подождите, идёт нагревание</string>
+    <string name="elecNoServer">Подождите, идёт электролиз</string>
 
 </resources>
