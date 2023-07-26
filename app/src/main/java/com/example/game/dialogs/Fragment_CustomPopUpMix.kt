@@ -2,14 +2,12 @@ package com.example.game.dialogs
 
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.game.R
 import com.example.game.ServerCommunication.Client
@@ -93,12 +91,6 @@ class Fragment_CustomPopUpMix : DialogFragment() {
                             },
                             /** onError */
                             {
-                                client.close()
-                                Toast.makeText(
-                                    context,
-                                    "Соединение с сервером было разорвано",
-                                    Toast.LENGTH_SHORT
-                                ).show()
                                 listenerForResult.onFailedReceive(this_)
                                 dismiss()
                             },
@@ -132,7 +124,8 @@ class Fragment_CustomPopUpMix : DialogFragment() {
         return dialog
     }
 
-    override fun onCancel(dialog: DialogInterface) {
+    override fun onStop() {
+        super.onStop()
         if (client.connected) {
             client.close()
         }

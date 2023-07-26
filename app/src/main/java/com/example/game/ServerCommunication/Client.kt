@@ -123,7 +123,7 @@ class Client : Thread() {
                         messageEmitter.onNext(tmpMessage)
                     }
                 } catch (ex: Exception) {
-                    messageEmitter.onError(ex)
+                    socket = null
                     break
                 }
             }
