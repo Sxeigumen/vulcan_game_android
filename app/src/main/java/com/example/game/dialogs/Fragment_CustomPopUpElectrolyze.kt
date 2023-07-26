@@ -115,6 +115,7 @@ class Fragment_CustomPopUpElectrolyze : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.closepopup.setOnClickListener {
+            noConnectionTimer.cancel()
             listenerForResult.onFailedReceive(this)
             dismiss()
         }
@@ -131,6 +132,8 @@ class Fragment_CustomPopUpElectrolyze : DialogFragment() {
         listenerForResult.onFailedReceive(this)
         if (client.connected) {
             client.close()
+        } else {
+            noConnectionTimer.cancel()
         }
     }
 
