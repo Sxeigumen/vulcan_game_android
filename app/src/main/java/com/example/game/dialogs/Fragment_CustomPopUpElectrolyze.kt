@@ -81,13 +81,13 @@ class Fragment_CustomPopUpElectrolyze : DialogFragment() {
                             /** onNext */
                             {
                                 when {
-                                    (it.endsWith(Client.HttpAnswers.success)) -> {
-                                        listenerForResult.onSuccessfulReceive(this_)
+                                    (it.endsWith(Client.HttpAnswers.unsuccess)) -> {
+                                        listenerForResult.onFailedReceive(this_)
                                         dismiss()
                                     }
 
-                                    (it.endsWith(Client.HttpAnswers.unsuccess)) -> {
-                                        listenerForResult.onFailedReceive(this_)
+                                    (it.endsWith(Client.HttpAnswers.success)) -> {
+                                        listenerForResult.onSuccessfulReceive(this_)
                                         dismiss()
                                     }
                                 }
@@ -95,11 +95,6 @@ class Fragment_CustomPopUpElectrolyze : DialogFragment() {
                             /** onError */
                             {
                                 client.close()
-                                Toast.makeText(
-                                    context,
-                                    "Соединение с сервером было разорвано",
-                                    Toast.LENGTH_SHORT
-                                ).show()
                                 listenerForResult.onFailedReceive(this_)
                                 dismiss()
                             },
@@ -133,7 +128,8 @@ class Fragment_CustomPopUpElectrolyze : DialogFragment() {
         return dialog
     }
 
-    override fun onCancel(dialog: DialogInterface) {
+    override fun onStop() {
+        super.onStop()
         if (client.connected) {
             client.close()
         }

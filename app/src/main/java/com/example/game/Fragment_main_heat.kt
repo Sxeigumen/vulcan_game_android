@@ -46,14 +46,37 @@ class Fragment_main_heat : Fragment() {
                     freeBoxIndex_heat++
                 }
 
-                1 -> {
+                1, 4, 6, 9 -> {
+                    Log.i("test", "add1")
                     binding.iv1Heat.visibility = View.VISIBLE
                     binding.iv1Heat.setImageResource(it.ImageId)
+                    binding.iv1Heat.tag = it.ImageId
                     elements.add(it)
                     Log.i("elements", it.ImageId.toString())
                     imageIdList.add(it.ImageId)
                     freeBoxIndex_heat++
                 }
+
+                2, 7 -> {
+                    binding.iv2Heat.visibility = View.VISIBLE
+                    binding.iv2Heat.setImageResource(it.ImageId)
+                    binding.iv2Heat.tag = it.ImageId
+                    elements.add(it)
+                    Log.i("elements", it.ImageId.toString())
+                    imageIdList.add(it.ImageId)
+                    freeBoxIndex_heat += 3
+                }
+
+                5 -> {
+                    binding.iv3Heat.visibility = View.VISIBLE
+                    binding.iv3Heat.setImageResource(it.ImageId)
+                    binding.iv3Heat.tag = it.ImageId
+                    elements.add(it)
+                    Log.i("elements", it.ImageId.toString())
+                    imageIdList.add(it.ImageId)
+                    freeBoxIndex_heat += 5
+                }
+
 
                 else -> {
                     if (!GETNEWELEMENT)
@@ -69,6 +92,8 @@ class Fragment_main_heat : Fragment() {
         freeBoxIndex_heat = 0
         Log.i("test", "testHeat")
         binding.iv1Heat.setImageDrawable(null)
+        binding.iv2Heat.setImageDrawable(null)
+        binding.iv3Heat.setImageDrawable(null)
         binding.iv1Heat.setOnClickListener {
             if (binding.iv1Heat.drawable != null) {
                 binding.iv1Heat.visibility = View.INVISIBLE
@@ -78,12 +103,33 @@ class Fragment_main_heat : Fragment() {
                 imageIdList.removeAt(0)
             }
         }
+        binding.iv2Heat.setOnClickListener {
+            if (binding.iv2Heat.drawable != null) {
+                binding.iv2Heat.visibility = View.INVISIBLE
+                val indexElement: Int = binding.iv2Heat.tag as Int
+                freeBoxIndex_heat -= 3
+                Log.i("elements", indexElement.toString())
+                elements.remove(indexElement)
+            }
+        }
+
+        binding.iv3Heat.setOnClickListener {
+            if (binding.iv3Heat.drawable != null) {
+                binding.iv3Heat.visibility = View.INVISIBLE
+                val indexElement: Int = binding.iv3Heat.tag as Int
+                freeBoxIndex_heat -= 5
+                Log.i("elements", indexElement.toString())
+                elements.remove(indexElement)
+            }
+        }
         binding.btnGetHeat.setOnClickListener {
             val resElements = HeatResult.get(elements)
             GETNEWELEMENT = true
             if (resElements != null) {
                 showPopUp()
                 dataModel.potentialElementsToAdd.value = resElements
+                binding.iv3Heat.callOnClick()
+                binding.iv2Heat.callOnClick()
                 binding.iv1Heat.callOnClick()
             } else {
                 MAIN.customToast(R.string.noResult)

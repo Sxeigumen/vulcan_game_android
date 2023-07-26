@@ -25,11 +25,6 @@
             android:exported="true"
             android:screenOrientation="unspecified" />
         <activity
-            android:name=".MenuActivity"
-            android:exported="true"
-            android:screenOrientation="fullSensor"
-            android:theme="@style/NoactionBar" />
-        <activity
             android:name=".ResultActivity"
             android:screenOrientation="fullSensor" />
         <activity
@@ -37,17 +32,25 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/NoactionBar" />
+
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/NoactionBar"
-            android:windowSoftInputMode="adjustResize">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+        </activity>
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
     </application>
 
 </manifest>

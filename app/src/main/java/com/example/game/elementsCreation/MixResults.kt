@@ -10,7 +10,7 @@ object MixResults : ChemicalReactionsResults {
             Pair(Element(R.drawable.vodorod, "Водород"), 2u),
             Pair(Element(R.drawable.kislorod, "Кислород"), 1u)
         ) to listOf(
-            Element(R.drawable.water, "Вода")
+            Element(R.drawable.voda, "Вода")
         ),
 
         /** Фторид Марганца */
@@ -19,6 +19,14 @@ object MixResults : ChemicalReactionsResults {
             Pair(Element(R.drawable.ftor, "Фтор"), 2u)
         ) to listOf(
             Element(R.drawable.ftorid_marganca, "Фторид Марганца (II)")
-        )
+        ),
+
+        /** Оксид серы */
+        Elements(
+            Pair(Element(R.drawable.serovodorod, "Сероводород"), 1u),
+            Pair(Element(R.drawable.kislorod, "Кислород"), 1u)
+        ) to listOf(
+            Element(R.drawable.oksid_sery, "Оксид серы (IV)")
+        ),
     )
 }

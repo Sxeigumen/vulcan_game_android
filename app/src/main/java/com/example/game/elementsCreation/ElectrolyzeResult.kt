@@ -10,7 +10,13 @@ object ElectrolyzeResult : ChemicalReactionsResults {
             Pair(Element(R.drawable.sol, "Соль"), 1u)
         ) to listOf(
             Element(R.drawable.natriy, "Натрий"),
-            Element(R.drawable.chlor, "Хлор")
-        )
+            Element(R.drawable.hlor, "Хлор")
+        ),
+        /** Получение калия */
+        Elements(
+            Pair(Element(R.drawable.gidroksid_kaliya, "Гидроксид калия"), 1u)
+        ) to listOf(
+            Element(R.drawable.kaliy, "Калий")
+        ),
     )
 }

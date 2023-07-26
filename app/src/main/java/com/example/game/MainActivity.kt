@@ -1,5 +1,6 @@
 package com.example.game
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -9,21 +10,33 @@ import androidx.appcompat.widget.AppCompatEditText
 
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        val buttonStart:Button = findViewById(R.id.btn_start)
-        val etName:AppCompatEditText = findViewById(R.id.et_name)
+        setContentView(R.layout.activity_menu)
+        //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
-        buttonStart.setOnClickListener {
-            if (etName.text.toString().isEmpty()) {
-                Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
-            } else {
-                val intent = Intent(this, MenuActivity::class.java)
-                intent.putExtra(Constants.USER_NAME, etName.text.toString())
-                startActivity(intent)
-                finish()
-            }
+        val username = intent.getStringExtra(Constants.USER_NAME)
+        val buttonStart1:Button = findViewById(R.id.btn_start1)
+        val buttonStart2:Button = findViewById(R.id.btn_start2)
+        val buttonStart3:Button = findViewById(R.id.btn_start3)
+        buttonStart1.setOnClickListener {
+            val intent = Intent(this, LevelEasyActivity::class.java)
+            intent.putExtra(Constants.USER_NAME, username)
+            startActivity(intent)
+            finish()
+        }
+        buttonStart2.setOnClickListener {
+            val intent = Intent(this, LevelAverageActivity::class.java)
+            intent.putExtra(Constants.USER_NAME, username)
+            startActivity(intent)
+            finish()
+        }
+        buttonStart3.setOnClickListener {
+            val intent = Intent(this, LevelHardActivity::class.java)
+            intent.putExtra(Constants.USER_NAME, username)
+            startActivity(intent)
+            finish()
         }
     }
 }

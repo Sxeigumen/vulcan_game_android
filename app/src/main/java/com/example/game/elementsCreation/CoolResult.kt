@@ -7,7 +7,7 @@ object CoolResult: ChemicalReactionsResults {
     override val results: Map<Elements, List<Element>> = mapOf(
         /** Лед */
         Elements(
-            Pair(Element(R.drawable.water, "Вода"), 1u)
+            Pair(Element(R.drawable.voda, "Вода"), 1u)
         ) to listOf(
             Element(R.drawable.led, "Лед")
         )

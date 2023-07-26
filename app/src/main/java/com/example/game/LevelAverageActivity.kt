@@ -47,6 +47,14 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
         binding.maskDropArea.setOnDragListener(maskDragListener)
         binding.btnSubmit.setOnClickListener(this)
     }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
     @SuppressLint("SetTextI18n")
     private fun setQuestion() {
 

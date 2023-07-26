@@ -24,5 +24,5 @@
     <string name="shineNoServer">Подождите, идёт облучение электро-магнитными волнами</string>
     <string name="heatNoServer">Подождите, идёт нагревание</string>
     <string name="elecNoServer">Подождите, идёт электролиз</string>
-
+    <string name="racoon">Racoon Security</string>
 </resources>

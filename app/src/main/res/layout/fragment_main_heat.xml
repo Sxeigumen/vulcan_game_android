@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/actionTitle"
+            android:id="@+id/tempTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -49,6 +49,34 @@
                     android:layout_height="match_parent"
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="20dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cell2_heat"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="#1400bfff"
+                android:foreground="@drawable/item_borders">
+
+                <ImageView
+                    android:id="@+id/iv2_heat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cell3_heat"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="#1400bfff"
+                android:foreground="@drawable/item_borders">
+
+                <ImageView
+                    android:id="@+id/iv3_heat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button

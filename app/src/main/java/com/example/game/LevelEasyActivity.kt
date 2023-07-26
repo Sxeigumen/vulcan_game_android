@@ -39,6 +39,12 @@ class LevelEasyActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvOptionFour?.setOnClickListener(this)
         binding.btnSubmit?.setOnClickListener(this)
     }
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
     @SuppressLint("SetTextI18n")
     private fun setQuestion() {
 
