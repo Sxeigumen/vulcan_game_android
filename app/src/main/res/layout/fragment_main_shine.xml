@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
-            android:background="@drawable/light"
+            android:background="@drawable/lamp"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +45,7 @@
                 <ImageView
                     android:id="@+id/iv1_shine"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="20dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>

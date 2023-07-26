@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
-            android:background="@drawable/thunder"
+            android:background="@drawable/lightning"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
