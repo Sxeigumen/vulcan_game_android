@@ -79,7 +79,7 @@ class Fragment_main : Fragment() {
 
                 else -> {
                     if (!GETNEWELEMENT)
-                        MAIN.customToast(R.string.containersFilled)
+                        MAIN.customToast(getString(R.string.containersFilled))
                     GETNEWELEMENT = false
                 }
             }
@@ -134,7 +134,7 @@ class Fragment_main : Fragment() {
                 binding.iv2Main.callOnClick()
                 binding.iv1Main.callOnClick()
             } else {
-                MAIN.customToast(R.string.noResult)
+                MAIN.customToast(getString(R.string.noResult))
             }
         }
     }

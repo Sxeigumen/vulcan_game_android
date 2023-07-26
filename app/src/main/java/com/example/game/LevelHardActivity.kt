@@ -18,7 +18,6 @@ class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
 
     /** dataModel для связи с другими элементами UI */
     private val dataModel: DataModel by viewModels()
-    private val context = this
     var toast: Toast? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +32,7 @@ class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
         openFrag(Fragment_action.newInstance(), R.id.place3)
     }
 
-    fun customToast(string: Int) {
+    fun customToast(string: String) {
         if (toast != null) {
             toast?.cancel()
         }
@@ -76,6 +75,6 @@ class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
             elements += element.NameId + ' '
         }
         dataModel.potentialElementsToAdd.value = null
-        Toast.makeText(context, "Не удалось получить элемент $elements", Toast.LENGTH_LONG).show()
+        customToast("Не удалось получить элемент $elements")
     }
 }

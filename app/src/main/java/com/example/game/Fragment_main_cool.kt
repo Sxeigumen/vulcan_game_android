@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.example.game.databinding.FragmentMainCoolBinding
 import com.example.game.dialogs.Fragment_CustomPopUpCool
 import com.example.game.elementsCreation.CoolResult
@@ -32,13 +31,13 @@ class Fragment_main_cool : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMainCoolBinding.inflate(inflater)
         dialog = Dialog(requireContext())
         elements.empty()
         imageIdList.clear()
 
-        dataModel.elementFromList.observe(viewLifecycleOwner, Observer {
+        dataModel.elementFromList.observe(viewLifecycleOwner) {
             when (freeBoxIndex_cool) {
                 0 -> {
                     freeBoxIndex_cool++
@@ -55,11 +54,11 @@ class Fragment_main_cool : Fragment() {
 
                 else -> {
                     if (!GETNEWELEMENT)
-                        MAIN.customToast(R.string.containersFilled)
+                        MAIN.customToast(getString(R.string.containersFilled))
                     GETNEWELEMENT = false
                 }
             }
-        })
+        }
         return binding.root
     }
 
@@ -84,7 +83,7 @@ class Fragment_main_cool : Fragment() {
                 dataModel.potentialElementsToAdd.value = resElements
                 binding.iv1Cool.callOnClick()
             } else {
-                MAIN.customToast(R.string.noResult)
+                MAIN.customToast(getString(R.string.noResult))
             }
         }
     }
