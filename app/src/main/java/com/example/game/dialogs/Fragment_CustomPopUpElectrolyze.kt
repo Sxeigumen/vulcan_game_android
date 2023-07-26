@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.game.R
 import com.example.game.ServerCommunication.Client
@@ -64,7 +63,7 @@ class Fragment_CustomPopUpElectrolyze : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = CustompopupElecBinding.inflate(inflater)
 
         /** проверка установления соединения с сервером */
@@ -94,7 +93,6 @@ class Fragment_CustomPopUpElectrolyze : DialogFragment() {
                             },
                             /** onError */
                             {
-                                client.close()
                                 listenerForResult.onFailedReceive(this_)
                                 dismiss()
                             },
@@ -126,6 +124,14 @@ class Fragment_CustomPopUpElectrolyze : DialogFragment() {
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         return dialog
+    }
+
+    override fun onCancel(dialog: DialogInterface) {
+        super.onCancel(dialog)
+        listenerForResult.onFailedReceive(this)
+        if (client.connected) {
+            client.close()
+        }
     }
 
     override fun onStop() {

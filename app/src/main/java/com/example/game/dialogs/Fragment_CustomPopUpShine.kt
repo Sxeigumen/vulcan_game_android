@@ -2,6 +2,7 @@ package com.example.game.dialogs
 
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -61,7 +62,7 @@ class Fragment_CustomPopUpShine : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = CustompopupShineBinding.inflate(inflater)
 
         /** проверка установления соединения с сервером */
@@ -91,7 +92,6 @@ class Fragment_CustomPopUpShine : DialogFragment() {
                             },
                             /** onError */
                             {
-                                client.close()
                                 listenerForResult.onFailedReceive(this_)
                                 dismiss()
                             },
@@ -123,6 +123,14 @@ class Fragment_CustomPopUpShine : DialogFragment() {
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         return dialog
+    }
+
+    override fun onCancel(dialog: DialogInterface) {
+        super.onCancel(dialog)
+        listenerForResult.onFailedReceive(this)
+        if (client.connected) {
+            client.close()
+        }
     }
 
     override fun onStop() {
