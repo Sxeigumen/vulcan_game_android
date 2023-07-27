@@ -41,6 +41,22 @@ object HeatResult : ChemicalReactionsResults {
 //            Pair(Element(R.drawable.pesok, "Песок"), 1u)
 //        ) to listOf(
 //            Element(R.drawable.gidkoe_steklo, "Жидкое стекло")
-//        )
+//        ),
+        /** Каучук, парафин */
+        Elements(
+            Pair(Element(R.drawable.neft, "Нефть"), 1u)
+        ) to listOf(
+            Element(R.drawable.kauchuk, "Каучук"),
+            Element(R.drawable.parafin, "Парафин")
+        ),
+
+        /** Шина */
+        Elements(
+            Pair(Element(R.drawable.kauchuk, "Каучук"), 1u),
+            Pair(Element(R.drawable.parafin, "Парафин"), 1u),
+            Pair(Element(R.drawable.vosk, "Воск"), 1u),
+        ) to listOf(
+            Element(R.drawable.shina, "Шина")
+        )
     )
 }

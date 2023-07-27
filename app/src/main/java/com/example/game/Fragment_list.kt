@@ -55,15 +55,17 @@ class Fragment_list : Fragment(), ElementAdapter.Listener {
     private fun generate(adapter: ElementAdapter) {
         val elements = listOf(
             Element(R.drawable.vodorod, "Водород"),
+            Element(R.drawable.vosk, "Воск"),
+            Element(R.drawable.gidroksid_kaliya, "Гидроксид калия"),
             Element(R.drawable.kislorod, "Кислород"),
-            Element(R.drawable.marganec, "Марганец"),
-            Element(R.drawable.ftor, "Фтор"),
-            Element(R.drawable.sol, "Соль"),
             Element(R.drawable.kremniy, "Кремний"),
+            Element(R.drawable.marganec, "Марганец"),
+            Element(R.drawable.neft, "Нефть"),
             Element(R.drawable.sera, "Сера"),
-            Element(R.drawable.fosfor, "Фосфор"),
+            Element(R.drawable.sol, "Соль"),
             Element(R.drawable.ugarny_gaz, "Угарный газ"),
-            Element(R.drawable.gidroksid_kaliya, "Гидроксид калия")
+            Element(R.drawable.fosfor, "Фосфор"),
+            Element(R.drawable.ftor, "Фтор"),
         )
         for (element in elements) {
             adapter.add(element)
