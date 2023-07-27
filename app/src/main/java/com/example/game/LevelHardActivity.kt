@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.game.databinding.ActivityLevelHardBinding
 import com.example.game.dialogs.CustomPopUpListener
+import com.example.game.dialogs.Fragment_CustomPopUpNewElement
 
 class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
     private lateinit var binding: ActivityLevelHardBinding
@@ -65,6 +66,7 @@ class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
     override fun onSuccessfulReceive(dialog: DialogFragment) {
         for (element in dataModel.potentialElementsToAdd.value!!) {
             dataModel.elementToList.value = element
+            showNewElementPopUp(element)
         }
     }
 
@@ -76,5 +78,10 @@ class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
         }
         dataModel.potentialElementsToAdd.value = null
         customToast("Не удалось получить элемент $elements")
+    }
+
+    /** функция для отображения всплывающего окна, уведомляющего о новом элементе */
+    fun showNewElementPopUp(element: Element) {
+        Fragment_CustomPopUpNewElement(element).show(supportFragmentManager, "NewElementPopUp")
     }
 }
