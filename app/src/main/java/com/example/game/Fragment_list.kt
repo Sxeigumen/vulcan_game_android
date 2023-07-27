@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,7 +32,6 @@ class Fragment_list : Fragment(), ElementAdapter.Listener {
                 ELECTROLYZE = true
             }
             elementAdapter.add(it)
-            Toast.makeText(MAIN, "Получен элемент ${it.NameId}", Toast.LENGTH_SHORT).show()
         }
 
         return binding.root
