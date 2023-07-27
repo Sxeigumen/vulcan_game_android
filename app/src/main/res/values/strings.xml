@@ -6,12 +6,7 @@
     <string name="ohlazhdeniyeTitle">Охлаждение</string>
     <string name="izlucheniyeTitle">Электро-магнитное излучение</string>
     <string name="electrolizTitle">Электролиз</string>
-    <string name="getResult">Получить</string>
-    <string name="smeshivanieButton">Смешивание</string>
-    <string name="nagrevanieButton">Нагревание</string>
-    <string name="ohlazhdeniyeButton">Охлаждение</string>
-    <string name="izlucheniyeButton">Излучение электро-магнитных волн</string>
-    <string name="electrolizButton">Электролиз</string>
+    <string name="getResult">Получение</string>
     <string name="noResult">Невозможно создать новый элемент из выбранных.</string>
     <string name="containersFilled">Все ячейки заполнены.</string>
     <string name="notHaveElec">Электричество ещё не изучено</string>
