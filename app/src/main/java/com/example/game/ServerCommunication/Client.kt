@@ -39,7 +39,7 @@ class Client : Thread() {
         const val heat = headerRequest + ControllerServices.Illuminate.toChar() + end
         const val cool = headerRequest + ControllerServices.ButtonPress0.toChar() + end
         const val shine = headerRequest + ControllerServices.Illuminate.toChar() + end
-        const val electrolyze = headerRequest + ControllerServices.ButtonPress1.toChar() + end
+        const val electrolyze = headerRequest + ControllerServices.ButtonPress2.toChar() + end
     }
 
     object HttpAnswers {
