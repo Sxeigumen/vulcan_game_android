@@ -82,8 +82,7 @@
                 <ImageView
                     android:id="@+id/ivOptionOne"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/capacitor"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
             <LinearLayout
@@ -96,8 +95,7 @@
                 <ImageView
                     android:id="@+id/ivOptionTwo"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/inductor"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
             <LinearLayout
@@ -110,8 +108,7 @@
                 <ImageView
                     android:id="@+id/ivOptionThree"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/resistor"/>
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
         <Button
