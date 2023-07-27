@@ -65,7 +65,7 @@ object HeatResult : ChemicalReactionsResults {
             Pair(Element(R.drawable.n_perehod, "N-тип"), 1u)
         ) to listOf(
             Element(R.drawable.transistor_pnp, "Транзистор(pnp)")
-        )
+        ),
 //
 //        /** Расплав песка */
 //        Elements(
@@ -88,6 +88,6 @@ object HeatResult : ChemicalReactionsResults {
             Pair(Element(R.drawable.vosk, "Воск"), 1u),
         ) to listOf(
             Element(R.drawable.shina, "Шина")
-        )
+        ),
     )
 }

@@ -93,7 +93,7 @@ object MixResults : ChemicalReactionsResults {
             Pair(Element(R.drawable.kremniy, "Кремний"), 1u)
         ) to listOf(
             Element(R.drawable.p_perehod, "P-тип")
-        )
+        ),
 //        /** Песок */
 //        Elements(
 //            Pair(Element(R.drawable.kremniy, "Кремний"), 1u),
