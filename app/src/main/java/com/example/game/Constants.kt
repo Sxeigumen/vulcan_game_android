@@ -3,7 +3,7 @@ package com.example.game
 import android.text.BoringLayout
 
 lateinit var MAIN:LevelHardActivity
-lateinit var MAINEASY: LevelEasyActivity
+var MAINEASY: LevelEasyActivity? = null
 var ELECTROLYZE: Boolean = false
 var FIRSTMIX: Boolean = true
 var FIRSTCOOL: Boolean = true

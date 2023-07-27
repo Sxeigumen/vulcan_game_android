@@ -62,12 +62,37 @@ object MixResults : ChemicalReactionsResults {
             Element(R.drawable.metil, "Метиловый спирт")
         ),
 
-//        /** Песок */
-//        Elements(
-//            Pair(Element(R.drawable.kremniy, "Кремний"), 1u),
-//            Pair(Element(R.drawable.kislorod, "Кислород"), 2u)
-//        ) to listOf(
-//            Element(R.drawable.pesok, "Песок")
-//        )
+        /** Песок */
+        Elements(
+            Pair(Element(R.drawable.kremniy, "Кремний"), 1u),
+            Pair(Element(R.drawable.kislorod, "Кислород"), 2u)
+        ) to listOf(
+            Element(R.drawable.pesok, "Песок")
+        ),
+
+        /** USB */
+        Elements(
+            Pair(Element(R.drawable.uran, "Уран"), 1u),
+            Pair(Element(R.drawable.sera, "Сера"), 1u),
+            Pair(Element(R.drawable.bor, "Бор"), 1u)
+        ) to listOf(
+            Element(R.drawable.usb_normal, "USB")
+        ),
+
+        /** N-тип */
+        Elements(
+            Pair(Element(R.drawable.myshiyak, "Мышьяк"), 1u),
+            Pair(Element(R.drawable.kremniy, "Кремний"), 1u)
+        ) to listOf(
+            Element(R.drawable.n_perehod, "N-тип")
+        ),
+
+        /** P-тип */
+        Elements(
+            Pair(Element(R.drawable.germaniy, "Германий"), 1u),
+            Pair(Element(R.drawable.kremniy, "Кремний"), 1u)
+        ) to listOf(
+            Element(R.drawable.p_perehod, "P-тип")
+        )
     )
 }

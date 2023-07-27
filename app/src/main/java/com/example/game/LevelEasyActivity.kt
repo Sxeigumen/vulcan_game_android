@@ -7,7 +7,6 @@ import android.graphics.Typeface
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.provider.MediaStore.Audio.Media
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -23,19 +22,18 @@ class LevelEasyActivity : AppCompatActivity(), View.OnClickListener {
     private var mCorrectAnswers:Int = 0
     private var mUserName: String? = null
     private lateinit var binding: ActivityLevelEasyBinding
-    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_level_easy)
-        MAINEASY = this
+
         binding = ActivityLevelEasyBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        MAINEASY = this
         mUserName = intent.getStringExtra(Constants.USER_NAME)
         mQuestionsList = Constants.getQuestions()
         setQuestion()
-        playAudio()
+
         binding.tvOptionOne?.setOnClickListener(this)
         binding.tvOptionTwo?.setOnClickListener(this)
         binding.tvOptionThree?.setOnClickListener(this)
@@ -55,9 +53,9 @@ class LevelEasyActivity : AppCompatActivity(), View.OnClickListener {
         defaultOptionsView()
 
         if (mCurrentPosition - 1 == mQuestionsList!!.size) {
-            binding.btnSubmit?.text = "FINISH"
+            binding.btnSubmit?.text = "ЗАКОНЧИТЬ"
         } else {
-            binding.btnSubmit?.text = "SUBMIT"
+            binding.btnSubmit?.text = "ПОДТВЕРДИТЬ"
         }
 
         binding.progressBar?.progress = mCurrentPosition
@@ -130,14 +128,14 @@ class LevelEasyActivity : AppCompatActivity(), View.OnClickListener {
                         mCurrentPosition <= mQuestionsList!!.size -> {
                             setQuestion()
                         } else -> {
-                            val intent = Intent(this, ResultActivity::class.java)
-                            intent.putExtra(Constants.USER_NAME, mUserName)
-                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
-                            intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList?.size)
-                            intent.putExtra(Constants.NUMBER_OF_GAME, "1")
-                            startActivity(intent)
-                            finish()
-                        }
+                        val intent = Intent(this, ResultActivity::class.java)
+                        intent.putExtra(Constants.USER_NAME, mUserName)
+                        intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                        intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList?.size)
+                        intent.putExtra(Constants.NUMBER_OF_GAME, 1)
+                        startActivity(intent)
+                        finish()
+                    }
                     }
                 } else {
                     val question = mQuestionsList?.get(mCurrentPosition - 1)
@@ -149,9 +147,9 @@ class LevelEasyActivity : AppCompatActivity(), View.OnClickListener {
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
 
                     if (mCurrentPosition == mQuestionsList!!.size) {
-                        binding.btnSubmit?.text = "FINISH"
+                        binding.btnSubmit?.text = "ЗАКОНЧИТЬ"
                     } else {
-                        binding.btnSubmit?.text = "Go TO NEXT QUESTION"
+                        binding.btnSubmit?.text = "К СЛЕДУЮЩЕМУ ВОПРОСУ"
                     }
                     mSelectedOptionPosition = 0
                     binding.tvOptionOne?.isEnabled = false
@@ -197,27 +195,4 @@ class LevelEasyActivity : AppCompatActivity(), View.OnClickListener {
             R.drawable.selected_option_border_bg
         )
     }
-    fun playAudio(){
-        val audioURL = "https://s67vla.storage.yandex.net/get-mp3/a4b3560e4659800a6ca1e18be1b38de8/00060177b3aa3ae8/rmusic/U2FsdGVkX18lZfFP5bNel22r06hX10ISSp9oUaPXeWtiuBMvaNqyRvkeZgNZpUttWTgC8wSz6Q-8bhLQ6MWSiTNaIIgYHWuBQbxdbdzeoAw/7c0e37dc0d0da03c903df7778d08acc1544ee374664f64355dcec7c13b244e31/17891?track-id=111749884&play=false"
-        mediaPlayer = MediaPlayer()
-        mediaPlayer!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
-        try{
-            mediaPlayer!!.setDataSource(audioURL)
-            mediaPlayer!!.prepare()
-            mediaPlayer!!.start()
-        }catch (e: IOException){
-            e.printStackTrace()
-        }
-    }
-    fun pauseAudio(){
-        if(mediaPlayer != null){
-            if(mediaPlayer!!.isPlaying){
-                mediaPlayer!!.stop()
-                mediaPlayer!!.reset()
-                mediaPlayer!!.release()
-            }
-            mediaPlayer = null
-        }
-    }
-
 }

@@ -12,11 +12,19 @@ object ElectrolyzeResult : ChemicalReactionsResults {
             Element(R.drawable.natriy, "Натрий"),
             Element(R.drawable.hlor, "Хлор")
         ),
+
         /** Получение калия */
         Elements(
             Pair(Element(R.drawable.gidroksid_kaliya, "Гидроксид калия"), 1u)
         ) to listOf(
             Element(R.drawable.kaliy, "Калий")
+        ),
+
+        /** USB-breaker */
+        Elements(
+            Pair(Element(R.drawable.usb_normal, "USB"), 1u)
+        ) to listOf(
+            Element(R.drawable.usb, "USB-breaker")
         )
     )
 }

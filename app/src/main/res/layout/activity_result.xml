@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Result"
+        android:text="РЕЗУЛЬТАТ"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="25sp"
         android:textStyle="bold"/>
@@ -31,19 +31,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Hey, Congratulations!"
+        android:text="ПОЗДРАВЛЯЕМ!"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="25sp"
         android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        tools:text="Username" />
     <TextView
         android:id="@+id/tv_score"
         android:layout_width="wrap_content"
@@ -52,14 +43,14 @@
         android:textColor="@android:color/holo_green_dark"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:text="Your score is 9 out of 10" />
+        tools:text="Ваш результат 0/10" />
     <Button
         android:id="@+id/btn_finish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:backgroundTint="@android:color/holo_green_dark"
-        android:text="FINISH"
+        android:text="ЗАКОНЧИТЬ"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold" />

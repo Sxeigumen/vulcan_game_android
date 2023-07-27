@@ -35,12 +35,36 @@ object HeatResult : ChemicalReactionsResults {
         ) to listOf(
             Element(R.drawable.gremuchy_gaz, "Гремучий газ")
         ),
-//
-//        /** Расплав песка */
-//        Elements(
-//            Pair(Element(R.drawable.pesok, "Песок"), 1u)
-//        ) to listOf(
-//            Element(R.drawable.gidkoe_steklo, "Жидкое стекло")
-//        )
+
+        /** Расплав песка */
+        Elements(
+            Pair(Element(R.drawable.pesok, "Песок"), 1u)
+        ) to listOf(
+            Element(R.drawable.rasplavlennoe_steklo, "Жидкое стекло")
+        ),
+
+        /** PN-переход */
+        Elements(
+            Pair(Element(R.drawable.p_perehod, "P-тип"), 1u),
+            Pair(Element(R.drawable.n_perehod, "N-тип"), 1u)
+        ) to listOf(
+            Element(R.drawable.diod_normal, "PN-переход")
+        ),
+
+        /** Транзистор(npn) */
+        Elements(
+            Pair(Element(R.drawable.p_perehod, "P-тип"), 1u),
+            Pair(Element(R.drawable.n_perehod, "N-тип"), 2u)
+        ) to listOf(
+            Element(R.drawable.transistor_npn, "Транзистор(npn)")
+        ),
+
+        /** Транзистор(pnp) */
+        Elements(
+            Pair(Element(R.drawable.p_perehod, "P-тип"), 2u),
+            Pair(Element(R.drawable.n_perehod, "N-тип"), 1u)
+        ) to listOf(
+            Element(R.drawable.transistor_pnp, "Транзистор(pnp)")
+        )
     )
 }

@@ -63,7 +63,11 @@ class Fragment_list : Fragment(), ElementAdapter.Listener {
             Element(R.drawable.sera, "Сера"),
             Element(R.drawable.fosfor, "Фосфор"),
             Element(R.drawable.ugarny_gaz, "Угарный газ"),
-            Element(R.drawable.gidroksid_kaliya, "Гидроксид калия")
+            Element(R.drawable.gidroksid_kaliya, "Гидроксид калия"),
+            Element(R.drawable.germaniy, "Германий"),
+            Element(R.drawable.myshiyak, "Мышьяк"),
+            Element(R.drawable.uran, "Уран"),
+            Element(R.drawable.bor, "Бор")
         )
         for (element in elements) {
             adapter.add(element)

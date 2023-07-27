@@ -21,7 +21,7 @@ import androidx.core.content.res.ResourcesCompat
 import com.example.game.databinding.ActivityLevelAverageBinding
 
 class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
-    private val itemDragMessage = "Item Added"
+    private val itemDragMessage = "Элемент добавлен"
 
     private var mCurrentPosition:Int = 1
     private var mQuestionsList : ArrayList<QuestionAverage>? = null
@@ -47,14 +47,6 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
         binding.maskDropArea.setOnDragListener(maskDragListener)
         binding.btnSubmit.setOnClickListener(this)
     }
-
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
     @SuppressLint("SetTextI18n")
     private fun setQuestion() {
 
@@ -62,9 +54,9 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
         //defaultOptionsView()
 
         if (mCurrentPosition - 1 == mQuestionsList!!.size) {
-            binding.btnSubmit.text = "FINISH"
+            binding.btnSubmit.text = "ЗАКОНЧИТЬ"
         } else {
-            binding.btnSubmit.text = "SUBMIT"
+            binding.btnSubmit.text = "ПОДТВЕРДИТЬ"
         }
 
         binding.progressBar.progress = mCurrentPosition
@@ -78,32 +70,13 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
         binding.ivOptionThree.setImageResource(question.imageOptionThree)
 
     }
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 
-   /* private fun defaultOptionsView()
-    {
-        val options = ArrayList<TextView>()
-        binding.tvOptionOne?.let {
-            options.add(0, it)
-        }
-        binding.tvOptionTwo?.let {
-            options.add(1, it)
-        }
-        binding.tvOptionThree?.let {
-            options.add(2, it)
-        }
-
-
-        for (option in options)
-        {
-            option.setTextColor(Color.parseColor("#7A8089"))
-            option.typeface = Typeface.DEFAULT
-            option.isEnabled = true
-            option.background = ContextCompat.getDrawable(
-                this,
-                R.drawable.default_option_border_bg
-            )
-        }
-    }*/
 
     override fun onClick(v: View?) {
         when(v?.id) {
@@ -118,7 +91,7 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                         intent.putExtra(Constants.USER_NAME, mUserName)
                         intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
                         intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionsList?.size)
-                        intent.putExtra(Constants.NUMBER_OF_GAME, "2")
+                        intent.putExtra(Constants.NUMBER_OF_GAME, 2)
                         startActivity(intent)
                         finish()
                     }
@@ -128,39 +101,28 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                     if (question!!.correctAnswer != mCurrentStage) {
                         Toast.makeText(
                             this,
-                            "Incorrect answer",
+                            "НЕПРАВИЛЬНО :(",
                             Toast.LENGTH_SHORT
                         ).show()
                     } else {
                         Toast.makeText(
                             this,
-                            "CORRECT!",
+                            "ПРАВИЛЬНО! :)",
                             Toast.LENGTH_SHORT
                         ).show()
                         mCorrectAnswers++
                     }
                     if (mCurrentPosition == mQuestionsList!!.size) {
-                        binding.btnSubmit.text = "FINISH"
+                        binding.btnSubmit.text = "ЗАКОНЧИТЬ"
                     } else {
-                        binding.btnSubmit.text = "Go TO NEXT QUESTION"
+                        binding.btnSubmit.text = "К СЛЕДУЮЩЕМУ ВОПРОСУ"
                     }
                     mCurrentStage = 0
                 }
             }
         }
     }
-    /*private fun selectedOptionView(tv: TextView, selectedOptionNum: Int) {
-        defaultOptionsView()
-        mSelectedOptionPosition = selectedOptionNum
 
-        tv.setTextColor(Color.parseColor("#363A43"))
-        tv.setTypeface(tv.typeface, Typeface.BOLD)
-        tv.background = ContextCompat.getDrawable(
-            this,
-            R.drawable.selected_option_border_bg
-        )
-    }
-*/
     private val maskDragListener = View.OnDragListener {
             view, dragEvent ->
         val draggableItem = dragEvent.localState as View
@@ -177,7 +139,6 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
             }
             DragEvent.ACTION_DRAG_EXITED -> {
                 binding.maskDropArea.alpha = 1.0f
-                //draggableItem.visibility = View.VISIBLE
                 view.invalidate()
                 true
             }
@@ -185,11 +146,6 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                 binding.maskDropArea.alpha = 1.0f
                 if (draggableItem.id == R.id.ivOptionOne)
                 {
-                    /*val name : String = "schema${mCurrentPosition}_after_optionone"
-                    val resID = resources.getIdentifier(
-                        name, "drawable",
-                        packageName
-                    )*/
                     mQuestionsList?.get(mCurrentPosition - 1)?.let {
                         binding.ivScheme.setImageResource(
                             it.imageAfterOptionOne)
@@ -198,11 +154,6 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 if (draggableItem.id == R.id.ivOptionTwo)
                 {
-                    /*val name : String = "schema1_after_optiontwo"
-                    val resID = resources.getIdentifier(
-                        name, "drawable",
-                        packageName
-                    )*/
                     mQuestionsList?.get(mCurrentPosition - 1)?.let {
                         binding.ivScheme.setImageResource(
                             it.imageAfterOptionTwo)
@@ -211,11 +162,6 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 if (draggableItem.id == R.id.ivOptionThree)
                 {
-                    /*val name : String = "schema1_after_optionthree"
-                    val resID = resources.getIdentifier(
-                        name, "drawable",
-                        packageName
-                    )*/
                     mQuestionsList?.get(mCurrentPosition - 1)?.let {
                         binding.ivScheme.setImageResource(
                             it.imageAfterOptionThree)
@@ -223,21 +169,6 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                     }
                 }
 
-                /*if (dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
-                    val draggedData = dragEvent.clipData.getItemAt(0).text
-                    println("draggedData $draggedData")
-                }*/
-
-                /*draggableItem.x = dragEvent.x - (draggableItem.width/2)
-                draggableItem.y = dragEvent.y - (draggableItem.height/2)
-
-                val parent = draggableItem.parent as ConstraintLayout
-
-                parent.removeView(draggableItem)
-
-                val dropArea = view as ConstraintLayout
-                dropArea.addView(draggableItem)*/
-                //checkIfElementIsOnScheme(dragEvent)
                 true
             }
             DragEvent.ACTION_DRAG_ENDED -> {
@@ -251,22 +182,6 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
-    private val elementOn = "Bingo! Element on"
-    private val elementOff = "Element off :("
-    /*private fun checkIfElementIsOnScheme(dragEvent: DragEvent)  {
-        val faceXStart = binding.ivScheme.x
-        val faceYStart = binding.ivScheme.y
-
-        val faceXEnd = faceXStart + binding.ivScheme.width
-        val faceYEnd = faceYStart + binding.ivScheme.height
-
-        val toastedMsg = if (dragEvent.x in faceXStart..faceXEnd && dragEvent.y in faceYStart..faceYEnd) {
-            elementOn
-        } else {
-            elementOff
-        }
-        Toast.makeText(this, toastedMsg, Toast.LENGTH_SHORT).show()
-    }*/
     private fun attachViewDraglistener()
     {
         binding.ivOptionOne.setOnLongClickListener { view: View ->

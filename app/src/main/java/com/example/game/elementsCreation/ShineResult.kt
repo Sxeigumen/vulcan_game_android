@@ -10,7 +10,13 @@ object ShineResult : ChemicalReactionsResults {
             Pair(Element(R.drawable.kremniy, "Кремний"), 1u)
         ) to listOf(
             Element(R.drawable.tok, "Ток")
+        ),
+
+        /** led-куб */
+        Elements(
+            Pair(Element(R.drawable.diod_normal, "Диод"), 1u)
+        ) to listOf(
+            Element(R.drawable.led_kyb, "Ток")
         )
     )
-
 }
