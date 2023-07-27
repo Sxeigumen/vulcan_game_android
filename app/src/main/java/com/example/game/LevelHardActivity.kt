@@ -72,12 +72,8 @@ class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
 
     /** слушатель для неудачного получения элемента */
     override fun onFailedReceive(dialog: DialogFragment) {
-        var elements = ""
-        for (element in dataModel.potentialElementsToAdd.value!!) {
-            elements += element.NameId + ' '
-        }
         dataModel.potentialElementsToAdd.value = null
-        customToast("Не удалось получить элемент $elements")
+        customToast("Не удалось получить химический(-ие) элемент(ы)")
     }
 
     /** функция для отображения всплывающего окна, уведомляющего о новом элементе */
