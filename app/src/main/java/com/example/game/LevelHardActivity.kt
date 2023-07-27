@@ -58,6 +58,7 @@ class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val intent = Intent(this, MainActivity::class.java)
+        FIRSTMIX = true
         startActivity(intent)
         finish()
     }

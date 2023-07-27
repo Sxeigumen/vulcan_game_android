@@ -94,5 +94,28 @@ object MixResults : ChemicalReactionsResults {
         ) to listOf(
             Element(R.drawable.p_perehod, "P-тип")
         )
+//        /** Песок */
+//        Elements(
+//            Pair(Element(R.drawable.kremniy, "Кремний"), 1u),
+//            Pair(Element(R.drawable.kislorod, "Кислород"), 2u)
+//        ) to listOf(
+//            Element(R.drawable.pesok, "Песок")
+//        ),
+
+        /** Диск */
+        Elements(
+            Pair(Element(R.drawable.aluminiy, "Алюминий"), 1u),
+            Pair(Element(R.drawable.kremniy, "Кремний"), 1u)
+        ) to listOf(
+            Element(R.drawable.disk, "Диск")
+        ),
+
+        /** Колесо */
+        Elements(
+            Pair(Element(R.drawable.disk, "Диск"), 1u),
+            Pair(Element(R.drawable.shina, "Шина"), 1u),
+        ) to listOf(
+            Element(R.drawable.koleso, "Колесо")
+        ),
     )
 }
