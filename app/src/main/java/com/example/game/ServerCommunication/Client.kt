@@ -29,22 +29,22 @@ class Client : Thread() {
         const val headerRequest = "GET /device HTTP/1.1\r\n" +
                 "Host: ${ServerInfo.hostAddress}:${ServerInfo.port}\r\n" +
                 "Device: Controller\r\n" +
-                "Topic: instruction\r\n" +
+                "Topic: /Instructions\r\n" +
                 "Info: "
         const val end = "\r\n\r\n"
     }
 
     object HttpRequests {
-        const val mix = headerRequest + "mix" + end
-        const val heat = headerRequest + "heat" + end
-        const val cool = headerRequest + "cool" + end
-        const val shine = headerRequest + "shine" + end
-        const val electrolyze = headerRequest + "electrolyze" + end
+        const val mix = headerRequest + ControllerServices.Vibrate.toChar() + end
+        const val heat = headerRequest + ControllerServices.Illuminate.toChar() + end
+        const val cool = headerRequest + ControllerServices.ButtonPress0.toChar() + end
+        const val shine = headerRequest + ControllerServices.Illuminate.toChar() + end
+        const val electrolyze = headerRequest + ControllerServices.ButtonPress1.toChar() + end
     }
 
     object HttpAnswers {
-        const val success = "success$end"
-        const val unsuccess = "unsuccess$end"
+        const val success = "Win$end"
+        const val unsuccess = "Lose$end"
     }
 
     private object ControllerServices {
