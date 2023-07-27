@@ -39,6 +39,10 @@ class Fragment_main_electrolyze : Fragment() {
         imageIdList.clear()
 
         dataModel.elementFromList.observe(viewLifecycleOwner, Observer {
+            if(FIRSTMIX){
+                freeBoxIndex_elec++
+                FIRSTMIX = false
+            }
             when (freeBoxIndex_elec) {
                 0 -> {
                     freeBoxIndex_elec++

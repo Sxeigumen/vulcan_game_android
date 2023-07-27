@@ -64,7 +64,8 @@ class ResultActivity : AppCompatActivity() {
             }
         }
         tvScore.text = "Your score is $correctAnswers out of $totalQuestions"
-        btnFinish.setOnClickListener {  
+        btnFinish.setOnClickListener {
+            MAINEASY.pauseAudio()
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra(Constants.USER_NAME, username)
             startActivity(intent)

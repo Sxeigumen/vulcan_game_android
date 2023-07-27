@@ -41,6 +41,10 @@ class Fragment_main_heat : Fragment() {
         elements.empty()
         imageIdList.clear()
         dataModel.elementFromList.observe(viewLifecycleOwner, Observer {
+            if(FIRSTMIX){
+                freeBoxIndex_heat++
+                FIRSTMIX = false
+            }
             when (freeBoxIndex_heat) {
                 0 -> {
                     freeBoxIndex_heat++

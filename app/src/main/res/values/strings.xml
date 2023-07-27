@@ -25,4 +25,6 @@
     <string name="heatNoServer">Подождите, идёт нагревание</string>
     <string name="elecNoServer">Подождите, идёт электролиз</string>
     <string name="racoon">Racoon Security</string>
+    <string name="dance">DANCE BODY</string>
+    <string name="nodance">=(</string>
 </resources>

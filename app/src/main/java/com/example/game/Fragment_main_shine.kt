@@ -41,6 +41,10 @@ class Fragment_main_shine : Fragment() {
         elements.empty()
         imageIdList.clear()
         dataModel.elementFromList.observe(viewLifecycleOwner, Observer {
+            if(FIRSTMIX){
+                freeBoxIndex_shine++
+                FIRSTMIX = false
+            }
             when (freeBoxIndex_shine) {
                 0 -> {
                     freeBoxIndex_shine++

@@ -10,6 +10,13 @@ object CoolResult: ChemicalReactionsResults {
             Pair(Element(R.drawable.voda, "Вода"), 1u)
         ) to listOf(
             Element(R.drawable.led, "Лед")
-        )
+        ),
+
+//        /** Стекло */
+//        Elements(
+//            Pair(Element(R.drawable.gidkoe_steklo, "Жидкое стекло"), 1u)
+//        ) to listOf(
+//            Element(R.drawable.steklo, "Cтекло")
+//        )
     )
 }

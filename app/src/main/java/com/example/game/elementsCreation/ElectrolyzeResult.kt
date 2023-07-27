@@ -17,6 +17,6 @@ object ElectrolyzeResult : ChemicalReactionsResults {
             Pair(Element(R.drawable.gidroksid_kaliya, "Гидроксид калия"), 1u)
         ) to listOf(
             Element(R.drawable.kaliy, "Калий")
-        ),
+        )
     )
 }

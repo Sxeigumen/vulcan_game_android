@@ -39,6 +39,10 @@ class Fragment_main_cool : Fragment() {
         imageIdList.clear()
 
         dataModel.elementFromList.observe(viewLifecycleOwner, Observer {
+            if(FIRSTMIX){
+                freeBoxIndex_cool++
+                FIRSTMIX = false
+            }
             when (freeBoxIndex_cool) {
                 0 -> {
                     freeBoxIndex_cool++

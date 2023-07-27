@@ -2,18 +2,23 @@ package com.example.game
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
+import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
+    private var mediaPlayer: MediaPlayer? = null
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+
         //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
         val username = intent.getStringExtra(Constants.USER_NAME)
@@ -39,5 +44,6 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     }
+
 }
 

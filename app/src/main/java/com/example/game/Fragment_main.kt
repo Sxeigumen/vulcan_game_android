@@ -37,10 +37,13 @@ class Fragment_main : Fragment() {
         dialog = Dialog(requireContext())
         elements.empty()
         imageIdList.clear()
-
         /** слушатель получения элемента из списка */
         dataModel.elementFromList.observe(viewLifecycleOwner) {
             Log.i("fisrt", "test")
+            if(FIRSTMIX){
+                freeBoxIndex_main++
+                FIRSTMIX = false
+            }
             when (freeBoxIndex_main) {
                 0 -> {
                     freeBoxIndex_main++
