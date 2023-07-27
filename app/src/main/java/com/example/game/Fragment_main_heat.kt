@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.example.game.databinding.FragmentMainHeatBinding
 import com.example.game.dialogs.Fragment_CustomPopUpHeat
 import com.example.game.elementsCreation.Elements
@@ -32,7 +31,7 @@ class Fragment_main_heat : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMainHeatBinding.inflate(inflater)
         dialog = Dialog(requireContext())
         elements.empty()
@@ -40,7 +39,7 @@ class Fragment_main_heat : Fragment() {
 
         elements.empty()
         imageIdList.clear()
-        dataModel.elementFromList.observe(viewLifecycleOwner, Observer {
+        dataModel.elementFromList.observe(viewLifecycleOwner) {
             if(FIRSTMIX){
                 freeBoxIndex_heat++
                 FIRSTMIX = false
@@ -84,11 +83,11 @@ class Fragment_main_heat : Fragment() {
 
                 else -> {
                     if (!GETNEWELEMENT)
-                        MAIN.customToast(R.string.containersFilled)
+                        MAIN.customToast(getString(R.string.containersFilled))
                     GETNEWELEMENT = false
                 }
             }
-        })
+        }
         return binding.root
     }
 
@@ -136,7 +135,7 @@ class Fragment_main_heat : Fragment() {
                 binding.iv2Heat.callOnClick()
                 binding.iv1Heat.callOnClick()
             } else {
-                MAIN.customToast(R.string.noResult)
+                MAIN.customToast(getString(R.string.noResult))
             }
         }
     }

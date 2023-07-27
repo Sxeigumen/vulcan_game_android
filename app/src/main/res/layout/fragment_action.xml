@@ -17,46 +17,46 @@
 
             <Button
                 android:id="@+id/btn_mix"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="СМЕШАТЬ"
+                android:text="@string/smeshivanieTitle"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btn_heat"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="НАГРЕТЬ"
+                android:text="@string/nagrevanieTitle"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btn_holod"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="ОХЛАДИТЬ"
+                android:text="@string/ohlazhdeniyeTitle"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btn_izluch"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="ФОТОСИНТЕЗ"
+                android:text="@string/izlucheniyeTitle"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btn_electro"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="ЭЛЕКТРОЛИЗ"
+                android:text="@string/electrolizTitle"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>

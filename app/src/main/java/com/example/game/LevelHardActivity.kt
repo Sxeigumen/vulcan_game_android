@@ -14,10 +14,12 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.game.databinding.ActivityLevelHardBinding
 import com.example.game.dialogs.CustomPopUpListener
 import java.io.IOException
+import com.example.game.dialogs.Fragment_CustomPopUpNewElement
 
 class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
     private lateinit var binding: ActivityLevelHardBinding
     lateinit var navController: NavController
+
     /** dataModel для связи с другими элементами UI */
     private val dataModel: DataModel by viewModels()
     private val context = this
@@ -35,7 +37,7 @@ class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
         openFrag(Fragment_action.newInstance(), R.id.place3)
     }
 
-    fun customToast(string: Int) {
+    fun customToast(string: String) {
         if (toast != null) {
             toast?.cancel()
         }
@@ -68,16 +70,18 @@ class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
     override fun onSuccessfulReceive(dialog: DialogFragment) {
         for (element in dataModel.potentialElementsToAdd.value!!) {
             dataModel.elementToList.value = element
+            showNewElementPopUp(element)
         }
     }
 
     /** слушатель для неудачного получения элемента */
     override fun onFailedReceive(dialog: DialogFragment) {
-        var elements = ""
-        for (element in dataModel.potentialElementsToAdd.value!!) {
-            elements += element.NameId + ' '
-        }
         dataModel.potentialElementsToAdd.value = null
-        Toast.makeText(context, "Не удалось получить элемент $elements", Toast.LENGTH_LONG).show()
+        customToast("Не удалось получить химический(-ие) элемент(ы)")
+    }
+
+    /** функция для отображения всплывающего окна, уведомляющего о новом элементе */
+    fun showNewElementPopUp(element: Element) {
+        Fragment_CustomPopUpNewElement(element).show(supportFragmentManager, "NewElementPopUp")
     }
 }

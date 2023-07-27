@@ -2,6 +2,7 @@ package com.example.game.dialogs
 
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -26,7 +27,7 @@ class Fragment_CustomPopUpShine : DialogFragment() {
     private lateinit var listenerForResult: CustomPopUpListener
 
     /** таймер, закрывающий фрагмент при отсутсвии соединения с сервером */
-    private val noConnectionTimer = object : CountDownTimer(5000, 5000) {
+    private val noConnectionTimer = object : CountDownTimer(3500, 3500) {
         override fun onTick(millisUntilFinished: Long) {}
 
         override fun onFinish() {
@@ -61,7 +62,7 @@ class Fragment_CustomPopUpShine : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = CustompopupShineBinding.inflate(inflater)
 
         /** проверка установления соединения с сервером */
@@ -91,7 +92,6 @@ class Fragment_CustomPopUpShine : DialogFragment() {
                             },
                             /** onError */
                             {
-                                client.close()
                                 listenerForResult.onFailedReceive(this_)
                                 dismiss()
                             },
@@ -114,6 +114,7 @@ class Fragment_CustomPopUpShine : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.closepopup.setOnClickListener {
+            noConnectionTimer.cancel()
             listenerForResult.onFailedReceive(this)
             dismiss()
         }
@@ -123,6 +124,16 @@ class Fragment_CustomPopUpShine : DialogFragment() {
         val dialog = super.onCreateDialog(savedInstanceState)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         return dialog
+    }
+
+    override fun onCancel(dialog: DialogInterface) {
+        super.onCancel(dialog)
+        listenerForResult.onFailedReceive(this)
+        if (client.connected) {
+            client.close()
+        } else {
+            noConnectionTimer.cancel()
+        }
     }
 
     override fun onStop() {

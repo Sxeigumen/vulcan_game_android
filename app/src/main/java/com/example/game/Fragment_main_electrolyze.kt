@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.example.game.databinding.FragmentMainElectrolyzeBinding
 import com.example.game.dialog.Fragment_CustomPopUpElectrolyze
 import com.example.game.elementsCreation.ElectrolyzeResult
@@ -32,13 +31,13 @@ class Fragment_main_electrolyze : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMainElectrolyzeBinding.inflate(inflater)
         dialog = Dialog(requireContext())
         elements.empty()
         imageIdList.clear()
 
-        dataModel.elementFromList.observe(viewLifecycleOwner, Observer {
+        dataModel.elementFromList.observe(viewLifecycleOwner) {
             if(FIRSTMIX){
                 freeBoxIndex_elec++
                 FIRSTMIX = false
@@ -59,11 +58,11 @@ class Fragment_main_electrolyze : Fragment() {
 
                 else -> {
                     if (!GETNEWELEMENT)
-                        MAIN.customToast(R.string.containersFilled)
+                        MAIN.customToast(getString(R.string.containersFilled))
                     GETNEWELEMENT = false
                 }
             }
-        })
+        }
         return binding.root
     }
 
@@ -88,7 +87,7 @@ class Fragment_main_electrolyze : Fragment() {
                 dataModel.potentialElementsToAdd.value = resElements
                 binding.iv1Elec.callOnClick()
             } else {
-                MAIN.customToast(R.string.noResult)
+                MAIN.customToast(getString(R.string.noResult))
             }
         }
 

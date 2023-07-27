@@ -26,57 +26,46 @@ class Client : Thread() {
     private val executor = Executors.newSingleThreadExecutor()
 
     private companion object {
-        val headerRequest = "GET /device HTTP/1.1\r\n" +
+        const val headerRequest = "GET /device HTTP/1.1\r\n" +
                 "Host: ${ServerInfo.hostAddress}:${ServerInfo.port}\r\n" +
                 "Device: Controller\r\n" +
                 "Topic: instruction\r\n" +
                 "Info: "
-        val end = "\r\n\r\n"
+        const val end = "\r\n\r\n"
     }
 
     object HttpRequests {
-        val init = headerRequest + "init" + end
-        val mix = headerRequest + "mix" + end
-        val heat = headerRequest + "heat" + end
-        val cool = headerRequest + "cool" + end
-        val shine = headerRequest + "shine" + end
-        val electrolyze = headerRequest + "electrolyze" + end
+        const val mix = headerRequest + "mix" + end
+        const val heat = headerRequest + "heat" + end
+        const val cool = headerRequest + "cool" + end
+        const val shine = headerRequest + "shine" + end
+        const val electrolyze = headerRequest + "electrolyze" + end
     }
 
     object HttpAnswers {
-        val success = "success" + end
-        val unsuccess = "unsuccess" + end
-//        val mixSuccess = headerAnswer + "nice"
-//        val mixFailure = headerAnswer + "" + end
-//        val heatSuccess = headerAnswer + "" + end
-//        val heatFailure = headerAnswer + "" + end
-//        val coolSuccess = headerAnswer + "" + end
-//        val coolFailure = headerAnswer + "" + end
-//        val shineSuccess = headerAnswer + "" + end
-//        val shineFailure = headerAnswer + "" + end
-//        val electrolyzeSuccess = headerAnswer + "" + end
-//        val electrolyzeFailure = headerAnswer + "" + end
+        const val success = "success$end"
+        const val unsuccess = "unsuccess$end"
     }
 
     private object ControllerServices {
-        val Rotate: Byte = 0x00
-        val Accelerate: Byte = 0x01
-        val HeatUp: Byte = 0x02
-        val CoolDown: Byte = 0x03
-        val Illuminate: Byte = 0x04
-        val Darken: Byte = 0x05
-        val Vibrate: Byte = 0x06
-        val Smoke: Byte = 0x07
-        val ButtonPress0: Byte = 0x08
-        val ButtonPress1: Byte = 0x09
-        val ButtonPress2: Byte = 0x10
-        val ButtonPress3: Byte = 0x11
-        val ButtonPress4: Byte = 0x12
-        val ButtonPress5: Byte = 0x13
-        val ButtonPress6: Byte = 0x14
-        val ButtonPress7: Byte = 0x15
-        val ButtonPress8: Byte = 0x16
-        val Empty: Byte = 0xf
+        const val Rotate: Byte = 0x00
+        const val Accelerate: Byte = 0x01
+        const val HeatUp: Byte = 0x02
+        const val CoolDown: Byte = 0x03
+        const val Illuminate: Byte = 0x04
+        const val Darken: Byte = 0x05
+        const val Vibrate: Byte = 0x06
+        const val Smoke: Byte = 0x07
+        const val ButtonPress0: Byte = 0x08
+        const val ButtonPress1: Byte = 0x09
+        const val ButtonPress2: Byte = 0x10
+        const val ButtonPress3: Byte = 0x11
+        const val ButtonPress4: Byte = 0x12
+        const val ButtonPress5: Byte = 0x13
+        const val ButtonPress6: Byte = 0x14
+        const val ButtonPress7: Byte = 0x15
+        const val ButtonPress8: Byte = 0x16
+        const val Empty: Byte = 0xf
     }
 
     /** Отправка на сервер */
@@ -114,10 +103,6 @@ class Client : Thread() {
                     lastByteNum = inputStream.read(buffer)
                     if (lastByteNum > 0) {
                         val tmpMessage = String(buffer, 0, lastByteNum)
-                        if (tmpMessage == "stop") {
-                            close()
-                            break
-                        }
 
                         /** Отправка сообщения в UI */
                         messageEmitter.onNext(tmpMessage)

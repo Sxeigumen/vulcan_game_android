@@ -17,7 +17,7 @@ object HeatResult : ChemicalReactionsResults {
             Pair(Element(R.drawable.vodorod, "Водород"), 2u),
             Pair(Element(R.drawable.sera, "Сера"), 1u)
         ) to listOf(
-            Element(R.drawable.par, "Сероводород")
+            Element(R.drawable.serovodorod, "Сероводород")
         ),
 
         /** Ортофосфорная кислота */
