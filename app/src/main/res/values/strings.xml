@@ -15,6 +15,8 @@
     <string name="noResult">Невозможно создать новый элемент из выбранных.</string>
     <string name="containersFilled">Все ячейки заполнены.</string>
     <string name="notHaveElec">Электричество ещё не изучено</string>
+    <string name="newElementTitle">Получен новый элемент!</string>
+    <string name="ok">ОК</string>
     <string name="loading">Загрузка…</string>
     <string name="mixWithServer">Встряхните контроллер</string>
     <string name="coolWithServer">Охладите контроллер</string>
