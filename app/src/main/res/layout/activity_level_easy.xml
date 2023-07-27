@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="SUBMIT"
+            android:text="ПОДТВЕРДИТЬ"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold"/>

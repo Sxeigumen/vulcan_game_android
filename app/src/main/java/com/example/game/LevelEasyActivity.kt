@@ -46,9 +46,9 @@ class LevelEasyActivity : AppCompatActivity(), View.OnClickListener {
         defaultOptionsView()
 
         if (mCurrentPosition - 1 == mQuestionsList!!.size) {
-            binding.btnSubmit?.text = "FINISH"
+            binding.btnSubmit?.text = "ЗАКОНЧИТЬ"
         } else {
-            binding.btnSubmit?.text = "SUBMIT"
+            binding.btnSubmit?.text = "ПОДТВЕРДИТЬ"
         }
 
         binding.progressBar?.progress = mCurrentPosition
@@ -140,9 +140,9 @@ class LevelEasyActivity : AppCompatActivity(), View.OnClickListener {
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
 
                     if (mCurrentPosition == mQuestionsList!!.size) {
-                        binding.btnSubmit?.text = "FINISH"
+                        binding.btnSubmit?.text = "ЗАКОНЧИТЬ"
                     } else {
-                        binding.btnSubmit?.text = "Go TO NEXT QUESTION"
+                        binding.btnSubmit?.text = "К СЛЕДУЮЩЕМУ ВОПРОСУ"
                     }
                     mSelectedOptionPosition = 0
                     binding.tvOptionOne?.isEnabled = false

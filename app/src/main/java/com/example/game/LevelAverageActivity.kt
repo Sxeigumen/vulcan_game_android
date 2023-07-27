@@ -54,9 +54,9 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
         //defaultOptionsView()
 
         if (mCurrentPosition - 1 == mQuestionsList!!.size) {
-            binding.btnSubmit.text = "FINISH"
+            binding.btnSubmit.text = "ЗАКОНЧИТЬ"
         } else {
-            binding.btnSubmit.text = "SUBMIT"
+            binding.btnSubmit.text = "ПОДТВЕРДИТЬ"
         }
 
         binding.progressBar.progress = mCurrentPosition
@@ -120,21 +120,21 @@ class LevelAverageActivity : AppCompatActivity(), View.OnClickListener {
                     if (question!!.correctAnswer != mCurrentStage) {
                         Toast.makeText(
                             this,
-                            "Incorrect answer",
+                            "НЕПРАВИЛЬНО :(",
                             Toast.LENGTH_SHORT
                         ).show()
                     } else {
                         Toast.makeText(
                             this,
-                            "CORRECT!",
+                            "ПРАВИЛЬНО! :)",
                             Toast.LENGTH_SHORT
                         ).show()
                         mCorrectAnswers++
                     }
                     if (mCurrentPosition == mQuestionsList!!.size) {
-                        binding.btnSubmit.text = "FINISH"
+                        binding.btnSubmit.text = "ЗАКОНЧИТЬ"
                     } else {
-                        binding.btnSubmit.text = "Go TO NEXT QUESTION"
+                        binding.btnSubmit.text = "К СЛЕДУЮЩЕМУ ВОПРОСУ"
                     }
                     mCurrentStage = 0
                 }

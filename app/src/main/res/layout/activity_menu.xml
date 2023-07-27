@@ -13,7 +13,7 @@
         android:id="@+id/tv_app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MENU"
+        android:text="МЕНЮ"
         android:gravity="center"
         android:layout_marginBottom="30dp"
         android:textSize="25sp"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Level 1: Easy"
+                android:text="Уровень 1: Легкий"
                 android:textSize="30sp"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"/>
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@android:color/holo_green_dark"
-                android:text="Start"
+                android:text="НАЧАТЬ"
                 android:textSize="18sp"
                 android:textColor="@android:color/white">
             </Button>
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Level 2: Average"
+                android:text="Уровень 2: Средний"
                 android:textSize="30sp"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"/>
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@android:color/holo_green_dark"
-                android:text="Start"
+                android:text="НАЧАТЬ"
                 android:textSize="18sp"
                 android:textColor="@android:color/white">
             </Button>
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Level 3: Hard"
+                android:text="Уровень 3: Сложный"
                 android:textSize="30sp"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"/>
@@ -121,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Start"
+                android:text="НАЧАТЬ"
                 android:backgroundTint="@android:color/holo_green_dark"
                 android:textSize="18sp"
                 android:textColor="@android:color/white">
