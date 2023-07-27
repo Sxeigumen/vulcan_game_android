@@ -40,7 +40,7 @@ class Fragment_main : Fragment() {
         /** слушатель получения элемента из списка */
         dataModel.elementFromList.observe(viewLifecycleOwner) {
             Log.i("fisrt", "test")
-            if(FIRSTMIX){
+            if (FIRSTMIX) {
                 freeBoxIndex_main++
                 FIRSTMIX = false
             }

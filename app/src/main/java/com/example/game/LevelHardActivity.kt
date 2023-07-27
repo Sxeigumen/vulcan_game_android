@@ -1,8 +1,6 @@
 package com.example.game
 
 import android.content.Intent
-import android.media.AudioManager
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -13,7 +11,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.game.databinding.ActivityLevelHardBinding
 import com.example.game.dialogs.CustomPopUpListener
-import java.io.IOException
 import com.example.game.dialogs.Fragment_CustomPopUpNewElement
 
 class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
@@ -22,7 +19,6 @@ class LevelHardActivity : AppCompatActivity(), CustomPopUpListener {
 
     /** dataModel для связи с другими элементами UI */
     private val dataModel: DataModel by viewModels()
-    private val context = this
     var toast: Toast? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
