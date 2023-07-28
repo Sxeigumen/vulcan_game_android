@@ -48,7 +48,7 @@ object HeatResult : ChemicalReactionsResults {
             Pair(Element(R.drawable.p_perehod, "P-тип"), 1u),
             Pair(Element(R.drawable.n_perehod, "N-тип"), 1u)
         ) to listOf(
-            Element(R.drawable.diod_normal, "PN-переход")
+            Element(R.drawable.pn_perehod, "Диод")
         ),
 
         /** Транзистор(npn) */
@@ -66,13 +66,14 @@ object HeatResult : ChemicalReactionsResults {
         ) to listOf(
             Element(R.drawable.transistor_pnp, "Транзистор(pnp)")
         ),
-//
-//        /** Расплав песка */
-//        Elements(
-//            Pair(Element(R.drawable.pesok, "Песок"), 1u)
-//        ) to listOf(
-//            Element(R.drawable.gidkoe_steklo, "Жидкое стекло")
-//        ),
+
+        /** Расплав песка */
+        Elements(
+            Pair(Element(R.drawable.pesok, "Песок"), 1u)
+        ) to listOf(
+            Element(R.drawable.rasplavlennoe_steklo, "Жидкое стекло")
+        ),
+
         /** Каучук, парафин */
         Elements(
             Pair(Element(R.drawable.neft, "Нефть"), 1u)
@@ -88,6 +89,14 @@ object HeatResult : ChemicalReactionsResults {
             Pair(Element(R.drawable.vosk, "Воск"), 1u),
         ) to listOf(
             Element(R.drawable.shina, "Шина")
+        ),
+
+        /** Гачи-каучук */
+        Elements(
+            Pair(Element(R.drawable.parafin, "Парафин"), 1u),
+            Pair(Element(R.drawable.kauchuk, "Каучук"), 1u)
+        ) to listOf(
+            Element(R.drawable.gashi_parafin, "Гачи-парафин")
         ),
     )
 }

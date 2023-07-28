@@ -94,13 +94,7 @@ object MixResults : ChemicalReactionsResults {
         ) to listOf(
             Element(R.drawable.p_perehod, "P-тип")
         ),
-//        /** Песок */
-//        Elements(
-//            Pair(Element(R.drawable.kremniy, "Кремний"), 1u),
-//            Pair(Element(R.drawable.kislorod, "Кислород"), 2u)
-//        ) to listOf(
-//            Element(R.drawable.pesok, "Песок")
-//        ),
+
 
         /** Диск */
         Elements(
@@ -116,6 +110,13 @@ object MixResults : ChemicalReactionsResults {
             Pair(Element(R.drawable.shina, "Шина"), 1u),
         ) to listOf(
             Element(R.drawable.koleso, "Колесо")
+        ),
+
+        /** led-куб */
+        Elements(
+            Pair(Element(R.drawable.diod_normal, "Светодиод"), 3u)
+        ) to listOf(
+            Element(R.drawable.led_kyb, "led-куб")
         ),
     )
 }

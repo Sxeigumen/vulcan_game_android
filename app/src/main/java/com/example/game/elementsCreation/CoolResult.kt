@@ -17,6 +17,6 @@ object CoolResult: ChemicalReactionsResults {
             Pair(Element(R.drawable.rasplavlennoe_steklo, "Жидкое стекло"), 1u)
         ) to listOf(
             Element(R.drawable.steklo, "Cтекло")
-        )
+        ),
     )
 }

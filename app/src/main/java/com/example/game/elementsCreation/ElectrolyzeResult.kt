@@ -25,6 +25,6 @@ object ElectrolyzeResult : ChemicalReactionsResults {
             Pair(Element(R.drawable.usb_normal, "USB"), 1u)
         ) to listOf(
             Element(R.drawable.usb, "USB-breaker")
-        )
+        ),
     )
 }

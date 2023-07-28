@@ -22,7 +22,7 @@
                 android:layout_gravity="center"
                 android:text="@string/smeshivanieTitle"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/btn_heat"
@@ -31,7 +31,7 @@
                 android:layout_gravity="center"
                 android:text="@string/nagrevanieTitle"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/btn_holod"
@@ -40,7 +40,7 @@
                 android:layout_gravity="center"
                 android:text="@string/ohlazhdeniyeTitle"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/btn_izluch"
@@ -49,7 +49,7 @@
                 android:layout_gravity="center"
                 android:text="@string/izlucheniyeTitle"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/btn_electro"
@@ -58,7 +58,7 @@
                 android:layout_gravity="center"
                 android:text="@string/electrolizTitle"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

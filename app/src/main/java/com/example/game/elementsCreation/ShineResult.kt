@@ -12,11 +12,11 @@ object ShineResult : ChemicalReactionsResults {
             Element(R.drawable.tok, "Ток")
         ),
 
-        /** led-куб */
+        /** Светодиод */
         Elements(
-            Pair(Element(R.drawable.diod_normal, "Диод"), 1u)
+            Pair(Element(R.drawable.pn_perehod, "Диод"), 1u)
         ) to listOf(
-            Element(R.drawable.led_kyb, "Ток")
-        )
+            Element(R.drawable.diod_normal, "Светодиод")
+        ),
     )
 }

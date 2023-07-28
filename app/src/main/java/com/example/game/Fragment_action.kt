@@ -45,7 +45,7 @@ class Fragment_action : Fragment() {
                 MAIN.replaceFragment(FragmentElec)
             }
             else{
-                Toast.makeText(context, R.string.notHaveElec, Toast.LENGTH_LONG).show()
+                MAIN.customToast(getString(R.string.notHaveElec))
             }
         }
 
